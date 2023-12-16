@@ -1,0 +1,43 @@
+version: '3'
+services:
+  server:
+    build: .
+    depends_on:
+      postgres:
+        condition: service_started
+    command: ['npm', 'run', 'start']
+    volumes:
+      - //var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 6069:3000
+    networks:
+      - alertly-network
+    environment:
+      - DB_HOST=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=root
+      - DB_NAME=alertly
+      - PORT=3000
+      - JWT_SECRET=AlertlySecret
+      - JWT_ALGO=HS256
+  postgres:
+    image: postgres
+    restart: unless-stopped
+    # command: --init-file /data/application/init.sql
+    volumes:
+      - postgres-volume:/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=alertly
+    networks:
+      - alertly-network
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost:5432"]
+    #   timeout: 5s
+volumes:
+  postgres-volume:
+    driver: local
+
+networks:
+  alertly-network:

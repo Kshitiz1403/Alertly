@@ -1,0 +1,11 @@
+{
+  "dev": {
+    "driver": "pg",
+    "user": "postgres",
+    "password": "root",
+    "host": "localhost",
+    "database": "alertly",
+    "port": "5432"
+  },
+  "sql-file": true
+}

@@ -12,7 +12,8 @@
     "lint": "npm run lint:js ",
     "lint:eslint": "eslint --ignore-path .gitignore --ext .ts",
     "lint:js": "npm run lint:eslint src/",
-    "lint:fix": "npm run lint:js -- --fix"
+    "lint:fix": "npm run lint:js -- --fix",
+    "migrate": "db-migrate up --env dev"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,8 @@
     "argon2": "^0.27.0",
     "celebrate": "^13.0.3",
     "cors": "^2.8.5",
+    "db-migrate": "^0.11.14",
+    "db-migrate-pg": "^1.5.2",
     "dotenv": "^8.2.0",
     "express": "^4.16.2",
     "jsonwebtoken": "^8.5.1",
@@ -31,6 +34,7 @@
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
     "reflect-metadata": "^0.1.13",
+    "swagger-ui-express": "^5.0.0",
     "typedi": "^0.8.0",
     "uuid": "^9.0.0",
     "winston": "^3.3.3"

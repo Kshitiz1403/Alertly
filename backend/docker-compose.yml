@@ -5,7 +5,7 @@ services:
     depends_on:
       postgres:
         condition: service_started
-    command: ['npm', 'run', 'start']
+    command: bash -c "npm run migrate && npm run start"
     volumes:
       - //var/run/docker.sock:/var/run/docker.sock
     ports:

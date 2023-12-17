@@ -42,4 +42,28 @@ export class GroupRepository {
       throw error;
     }
   };
+
+  public getGroupsForUser = async (userID: string) => {
+    try {
+      const query = `SELECT groups.group_id, groups.group_name, groups.description, user_groups.is_admin, groups.created_at FROM groups
+      INNER JOIN user_groups ON groups.group_id = user_groups.group_id
+      WHERE user_groups.user_id = $1`;
+      const values = [userID];
+      const result = await this.db.query(query, values);
+
+      const joinedGroups = result.rows as GroupsModel[];
+      return joinedGroups;
+    } catch (error) {}
+  };
+
+  public checkUserExists = async (user_id: string, group_id: number) => {
+    const query = `SELECT EXISTS (
+    SELECT 1
+    FROM user_groups
+    WHERE user_id = $1 AND group_id = $2
+) AS user_exists_in_group;`;
+    const values = [user_id, group_id];
+    const result = await this.db.query(query, values);
+    return result.rows[0].user_exists_in_group as boolean;
+  };
 }

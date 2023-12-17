@@ -56,7 +56,7 @@ export default ({ app }: { app: express.Application }) => {
      */
     if (err.status === 401) {
       LoggerInstance.error('🔥 error: %o', err);
-      return res.status(err.status).json(Result.error(err));
+      return res.status(err.status).json(Result.error(err.message));
     }
     LoggerInstance.error(err.stack || '%o', err);
     return next(err);

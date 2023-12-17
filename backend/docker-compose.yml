@@ -20,6 +20,7 @@ services:
       - PORT=3000
       - JWT_SECRET=AlertlySecret
       - JWT_ALGO=HS256
+      - GOOGLE_AUTH_CLIENT_ID=${GOOGLE_AUTH_CLIENT_ID}
   postgres:
     image: postgres
     restart: unless-stopped

@@ -91,4 +91,8 @@ export default (app: Router) => {
   group_routes.get('/', middlewares.isAuth, ctrl.getAllGroups);
 
   group_routes.get('/:group_id', middlewares.isAuth, middlewares.isUserInGroup, ctrl.getGroupAlerts);
+
+  group_routes.get('/:group_id/pin', middlewares.isAuth, middlewares.isUserInGroup, ctrl.pinGroup);
+
+  group_routes.get('/:group_id/unpin', middlewares.isAuth, middlewares.isUserInGroup, ctrl.unpinGroup);
 };

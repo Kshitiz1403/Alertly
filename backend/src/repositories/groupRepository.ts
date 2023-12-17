@@ -45,15 +45,31 @@ export class GroupRepository {
 
   public getGroupsForUser = async (userID: string) => {
     try {
-      const query = `SELECT groups.group_id, groups.group_name, groups.description, user_groups.is_admin, groups.created_at FROM groups
+      const query = `SELECT groups.group_id, user_groups.pinned, groups.group_name, groups.description, user_groups.is_admin, groups.created_at FROM groups
       INNER JOIN user_groups ON groups.group_id = user_groups.group_id
       WHERE user_groups.user_id = $1`;
       const values = [userID];
       const result = await this.db.query(query, values);
 
-      const joinedGroups = result.rows as GroupsModel[];
+      const joinedGroups = result.rows as (GroupsModel & { pinned: boolean })[];
       return joinedGroups;
     } catch (error) {}
+  };
+
+  public pinGroupForUser = async (userID: string, groupID: number) => {
+    const query = `UPDATE  user_groups SET pinned = TRUE WHERE 
+    user_id = $1 AND group_id= $2;`;
+    const values = [userID, groupID];
+    await this.db.query(query, values);
+    return;
+  };
+
+  public unpinGroupForUser = async (userID: string, groupID: number) => {
+    const query = `UPDATE  user_groups SET pinned = FALSE WHERE 
+    user_id = $1 AND group_id= $2;`;
+    const values = [userID, groupID];
+    await this.db.query(query, values);
+    return;
   };
 
   public checkUserExists = async (user_id: string, group_id: number) => {

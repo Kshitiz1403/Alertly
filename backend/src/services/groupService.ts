@@ -1,15 +1,22 @@
 import { GroupsModel } from '@/models/Groups';
+import { AlertRepository } from '@/repositories/alertRepository';
 import { GroupRepository } from '@/repositories/groupRepository';
 import { Service } from 'typedi';
 
 @Service()
 export class GroupService {
   protected groupRepository: GroupRepository;
-  constructor(groupRepository: GroupRepository) {
+  protected alertRepository: AlertRepository;
+  constructor(groupRepository: GroupRepository, alertRepo: AlertRepository) {
     this.groupRepository = groupRepository;
+    this.alertRepository = alertRepo;
   }
 
-  public getAllGroupsForUser = (userID: string) => {};
+  public getAllGroupsForUser = async (userID: string) => {
+    const groups = await this.groupRepository.getGroupsForUser(userID);
+
+    return groups;
+  };
 
   public createGroupByUser = async (
     userID: string,
@@ -19,5 +26,13 @@ export class GroupService {
     const groupID = await this.groupRepository.createGroupByUser(userID, group_name, description);
 
     return { groupID, group_name, description };
+  };
+
+  public getAlertsInGroup = async (group_id: number, pageNumber: number, pageSize: number) => {
+    if (isNaN(group_id)) throw 'invalid group id';
+    if (isNaN(pageNumber)) pageNumber = 1;
+    if (isNaN(pageSize)) pageSize = 20;
+    const alerts = await this.alertRepository.getGroupAlerts(group_id, pageNumber, pageSize);
+    return alerts;
   };
 }

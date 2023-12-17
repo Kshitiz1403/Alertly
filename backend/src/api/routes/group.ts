@@ -56,4 +56,39 @@ export default (app: Router) => {
    *                      default: yoyo
    */
   group_routes.post('/create', middlewares.isAuth, ctrl.createGroup);
+
+  /**
+   * @openapi
+   * /api/groups/:
+   *  get:
+   *    tag:
+   *      - Get Groups
+   *    description: Gets all groups associated with a user.
+   *    responses:
+   *      200:
+   *        description: 'OK'
+   *        content:
+   *          application/json:
+   *            schema:
+   *              type: object
+   *              properties:
+   *                success:
+   *                  type: boolean
+   *                  default: true
+   *                data:
+   *                  type: object
+   *                  properties:
+   *                    groupID:
+   *                      type: number
+   *                      default: 7
+   *                    group_name:
+   *                      type: string
+   *                      default: test-group
+   *                    description:
+   *                      type: string
+   *                      default: yoyo
+   */
+  group_routes.get('/', middlewares.isAuth, ctrl.getAllGroups);
+
+  group_routes.get('/:group_id', middlewares.isAuth, middlewares.isUserInGroup, ctrl.getGroupAlerts);
 };

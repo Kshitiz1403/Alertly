@@ -3,6 +3,8 @@ exports.preCommit = (props) => {
   // Extract current version
   const currentVersion = process.env.CURRENT_VERSION;
 
+  console.log(currentVersion);
+
   // Parse commits to determine version bump type
   const bumpType = determineBumpType(props.commits);
 

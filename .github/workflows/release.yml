@@ -25,7 +25,7 @@ jobs:
         id: android-build-version
         run: |
           VERSION=$(grep 'versionName = ' android_client/app/build.gradle.kts | awk -F '"' '{print $2}')
-          echo "Current Version: $VERSION"
+          echo "Current Gradle Version: $VERSION"
           echo "export CURRENT_VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Conventional Changelog Action Android
@@ -36,6 +36,10 @@ jobs:
           git-path: ./android_client
           pre-commit: ./pre-commit-android.js
           skip-version-file: true
+
+      - name: Update Android Build Gradle Version
+        run: |
+          sed -i "s/\(versionName = \)\"[^\"]*\"/\1\"${{steps.changelog-android.outputs.tag}}\"/" android_client/app/build.gradle.kts
 
       - name: create release backend
         uses: actions/create-release@v1

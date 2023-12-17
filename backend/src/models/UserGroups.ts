@@ -3,6 +3,7 @@ export interface UserGroupsModel {
   group_id: number;
   is_admin: boolean;
   created_at: Date;
+  pinned: boolean;
 }
 
 export enum UserGroupsTable {
@@ -10,4 +11,5 @@ export enum UserGroupsTable {
   group_id = 'group_id',
   is_admin = 'is_admin',
   created_at = 'created_at',
+  pinned = 'pinned',
 }

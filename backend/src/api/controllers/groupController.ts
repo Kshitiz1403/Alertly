@@ -52,4 +52,26 @@ export class GroupController {
       return next(error);
     }
   };
+
+  public pinGroup = async (req: IRequest, res: IResponse, next: INextFunction) => {
+    this.logger.debug('Calling Get Group Alerts endpoint with query: %o', req.params);
+    try {
+      const { group_id } = req.params;
+      await this.groupService.pinGroupForUser(+group_id, req.currentUser.sub);
+      return res.status(200).json(Result.success());
+    } catch (error) {
+      return next(error);
+    }
+  };
+
+  public unpinGroup = async (req: IRequest, res: IResponse, next: INextFunction) => {
+    this.logger.debug('Calling Get Group Alerts endpoint with query: %o', req.params);
+    try {
+      const { group_id } = req.params;
+      await this.groupService.unpinGroupForUser(+group_id, req.currentUser.sub);
+      return res.status(200).json(Result.success());
+    } catch (error) {
+      return next(error);
+    }
+  };
 }

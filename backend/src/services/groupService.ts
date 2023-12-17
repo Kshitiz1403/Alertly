@@ -29,10 +29,18 @@ export class GroupService {
   };
 
   public getAlertsInGroup = async (group_id: number, pageNumber: number, pageSize: number) => {
-    if (isNaN(group_id)) throw 'invalid group id';
     if (isNaN(pageNumber)) pageNumber = 1;
     if (isNaN(pageSize)) pageSize = 20;
     const alerts = await this.alertRepository.getGroupAlerts(group_id, pageNumber, pageSize);
     return alerts;
+  };
+
+  public pinGroupForUser = async (group_id: number, user_id: string) => {
+    await this.groupRepository.pinGroupForUser(user_id, group_id);
+    return;
+  };
+  public unpinGroupForUser = async (group_id: number, user_id: string) => {
+    await this.groupRepository.unpinGroupForUser(user_id, group_id);
+    return;
   };
 }

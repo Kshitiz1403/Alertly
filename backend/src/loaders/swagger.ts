@@ -29,7 +29,8 @@ const options: swaggerJsdoc.Options = {
   apis: [
     // 'src/api/index.ts',
     // 'src/api/routes/auth/auth.ts',
-    'src/api/routes/*/*.ts',
+    'src/api/routes/auth/*.ts',
+    'src/api/routes/*.ts',
   ],
 };
 

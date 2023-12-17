@@ -5,6 +5,7 @@ export interface UsersModel {
   given_name: string;
   family_name: string;
   email_verified: boolean;
+  last_login: Date;
 }
 
 export enum UsersTable {
@@ -14,4 +15,5 @@ export enum UsersTable {
   given_name = 'given_name',
   family_name = 'family_name',
   email_verified = 'email_verified',
+  last_login = 'last_login',
 }

@@ -1,3 +1,12 @@
+# [0.4.0](https://github.com/Kshitiz1403/Alertly/compare/v0.3.2...v0.4.0) (2023-12-17)
+
+
+### Features
+
+* Setting up android client ([7914974](https://github.com/Kshitiz1403/Alertly/commit/791497469a5d439b0a939bffc1327c47b432f1aa))
+
+
+
 ## [0.3.2](https://github.com/Kshitiz1403/Alertly/compare/v0.3.1...v0.3.2) (2023-12-17)
 
 
@@ -36,21 +45,6 @@
 ### Features
 
 * google authentication callback, sql migrations ([4444b1c](https://github.com/Kshitiz1403/Alertly/commit/4444b1c65e47ff678109aa005e237c906ce361ff))
-
-
-
-# [0.1.0](https://github.com/Kshitiz1403/Alertly/compare/0616418e2b6687e16b2c15b993198daa1d3550b6...v0.1.0) (2023-12-16)
-
-
-### Bug Fixes
-
-* version file path change ([a74f275](https://github.com/Kshitiz1403/Alertly/commit/a74f275e5eef953f598c2acbe6981b0022ba14fe))
-
-
-### Features
-
-* initial setu, containerised backend ([1bafd74](https://github.com/Kshitiz1403/Alertly/commit/1bafd74ff435046472b13e869e109ab8387fe337))
-* release rules ([0616418](https://github.com/Kshitiz1403/Alertly/commit/0616418e2b6687e16b2c15b993198daa1d3550b6))
 
 
 

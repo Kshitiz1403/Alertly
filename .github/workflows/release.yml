@@ -13,19 +13,38 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Conventional Changelog Action
-        id: changelog
+      - name: Conventional Changelog Action Backend
+        id: changelog-backend
         uses: TriPSs/conventional-changelog-action@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          git-path: ./backend
           version-file: ./backend/package.json
 
-      - name: create release
+      - name: create release backend
         uses: actions/create-release@v1
-        if: steps.changelog.outputs.skipped == 'false'
+        if: steps.changelog-backend.outputs.skipped == 'false'
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
-          tag_name: ${{ steps.changelog.outputs.tag }}
-          release_name: ${{ steps.changelog.outputs.tag }}
-          body: ${{ steps.changelog.outputs.clean_changelog }}
+          tag_name: ${{ steps.changelog-backend.outputs.tag }}
+          release_name: ${{ steps.changelog-backend.outputs.tag }}
+          body: ${{ steps.changelog-backend.outputs.clean_changelog }}
+
+      - name: Conventional Changelog Action Android
+        id: changelog-android
+        uses: TriPSs/conventional-changelog-action@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          git-path: ./android_client
+          skip-version-file: true
+
+      - name: create release android
+        uses: actions/create-release@v1
+        if: steps.changelog-android.outputs.skipped == 'false'
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          tag_name: ${{ steps.changelog-android.outputs.tag }}
+          release_name: ${{ steps.changelog-android.outputs.tag }}
+          body: ${{ steps.changelog-android.outputs.clean_changelog }}

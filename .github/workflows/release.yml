@@ -33,7 +33,7 @@ jobs:
         uses: TriPSs/conventional-changelog-action@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          git-path: ./android-client
+          git-path: ./android_client
           pre-commit: ./pre-commit-android.js
           skip-version-file: true
 

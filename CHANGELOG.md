@@ -1,3 +1,12 @@
+## [0.3.1](https://github.com/Kshitiz1403/Alertly/compare/v0.3.0...v0.3.1) (2023-12-17)
+
+
+### Bug Fixes
+
+* add google-auth-client-id from environment ([8ac9164](https://github.com/Kshitiz1403/Alertly/commit/8ac9164b4823a981811173ce4cc439c16a49bac3))
+
+
+
 # [0.3.0](https://github.com/Kshitiz1403/Alertly/compare/v0.2.0...v0.3.0) (2023-12-17)
 
 

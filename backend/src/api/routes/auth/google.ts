@@ -41,17 +41,18 @@ export default (app: Router) => {
    *    tag:
    *      - Login
    *    description: Recieves a google id_token after google signin is successful. Returns a unique id, email, jwt encoded payload.
-   *    parameters:
-   *      - in: body
-   *        name: id_token
-   *        required:
-   *          - id_token
-   *        schema:
-   *          type: object
-   *          properties:
-   *            id_token:
-   *              type: string
-   *              default: eyJhbGciOiJSUzI1NiIsImtpZCI6IjBhZDFmZWM3ODUwNGY0NDdiYWU2NWJjZjVhZmFlZGI2NWVlYzllODEiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIyODIzMTI2MDQwMzEtbDQyNzQzMWltMjJnM3Q0YmJuM2VvaGFxdHMzZDRobmQuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIyODIzMTI2MDQwMzEtaWlpcTI0aTQ0a2RyZjJyZmM2dWg1dWI5YWJqNjBpbGwuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDI5MDQyMDU3Nzg3MzI1MTUzMzMiLCJlbWFpbCI6Im5pcmFqcGF0aWRhcjgxQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiTmlyYWogUGF0aWRhciIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NJNDFfNXhjNllaNW9SNmlrZ3Y2bDhYVzd6Z2NxRkRwYW9aaU9uUy1KVUFabTlHPXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6Ik5pcmFqIiwiZmFtaWx5X25hbWUiOiJQYXRpZGFyIiwibG9jYWxlIjoiZW4tR0IiLCJpYXQiOjE3MDI3OTE2MzQsImV4cCI6MTcwMjc5NTIzNH0.mMvcsmU3dqf7ywv6ij0ghQCwvLDxQApxsSpbPVaElQzQdIAmDYQMDf3wDXyHtcexYB3yeSFR9ObTw-YFYwTU2HyFULcoFYvWV35PUhHFZ98X8a_5zfiB5ivn_Wb8do_eO_1z64v7H8icHYbBs1aejLrWWnBgARzRz-aU4aMorOtPYxwPxgU_2913qK30oKOCckUXUTwqZgr0rrj-DQZBYXQWV05ZRhvYXNhYhkpHv_r41kROLnJUtbitkO1xaDWnM13L_GKHuLMbwTd2TTKT4d6inweYQc1262lF_Q78Lc-qJVVWicSajFxDLf369jNdJH0vMCADK3VFRvuj9Nn5mA
+   *    requestBody:
+   *      content:
+   *        application/json:
+   *          name: id_token
+   *          required:
+   *            - id_token
+   *          schema:
+   *            type: object
+   *            properties:
+   *              id_token:
+   *                type: string
+   *                default: eyJhbGciOiJSUzI1NiIsImtpZCI6IjBhZDFmZWM3ODUwNGY0NDdiYWU2NWJjZjVhZmFlZGI2NWVlYzllODEiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIyODIzMTI2MDQwMzEtbDQyNzQzMWltMjJnM3Q0YmJuM2VvaGFxdHMzZDRobmQuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIyODIzMTI2MDQwMzEtaWlpcTI0aTQ0a2RyZjJyZmM2dWg1dWI5YWJqNjBpbGwuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDI5MDQyMDU3Nzg3MzI1MTUzMzMiLCJlbWFpbCI6Im5pcmFqcGF0aWRhcjgxQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiTmlyYWogUGF0aWRhciIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NJNDFfNXhjNllaNW9SNmlrZ3Y2bDhYVzd6Z2NxRkRwYW9aaU9uUy1KVUFabTlHPXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6Ik5pcmFqIiwiZmFtaWx5X25hbWUiOiJQYXRpZGFyIiwibG9jYWxlIjoiZW4tR0IiLCJpYXQiOjE3MDI3OTE2MzQsImV4cCI6MTcwMjc5NTIzNH0.mMvcsmU3dqf7ywv6ij0ghQCwvLDxQApxsSpbPVaElQzQdIAmDYQMDf3wDXyHtcexYB3yeSFR9ObTw-YFYwTU2HyFULcoFYvWV35PUhHFZ98X8a_5zfiB5ivn_Wb8do_eO_1z64v7H8icHYbBs1aejLrWWnBgARzRz-aU4aMorOtPYxwPxgU_2913qK30oKOCckUXUTwqZgr0rrj-DQZBYXQWV05ZRhvYXNhYhkpHv_r41kROLnJUtbitkO1xaDWnM13L_GKHuLMbwTd2TTKT4d6inweYQc1262lF_Q78Lc-qJVVWicSajFxDLf369jNdJH0vMCADK3VFRvuj9Nn5mA
    *    responses:
    *      200:
    *        description: 'OK'

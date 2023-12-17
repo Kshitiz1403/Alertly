@@ -1,3 +1,12 @@
+## [0.3.2](https://github.com/Kshitiz1403/Alertly/compare/v0.3.1...v0.3.2) (2023-12-17)
+
+
+### Bug Fixes
+
+* swagger request body ([5af7d88](https://github.com/Kshitiz1403/Alertly/commit/5af7d88c3b3f5f7dd24d5756ff7fec89db1d3219))
+
+
+
 ## [0.3.1](https://github.com/Kshitiz1403/Alertly/compare/v0.3.0...v0.3.1) (2023-12-17)
 
 

@@ -24,7 +24,7 @@ jobs:
       - name: Get Android Build Version
         id: android-build-version
         run: |
-          VERSION=$(grep 'versionName = ' build.gradle.kts | awk -F '"' '{print $2}')
+          VERSION=$(grep 'versionName = ' android_client/app/build.gradle.kts | awk -F '"' '{print $2}')
           echo "Current Version: $VERSION"
           echo "export CURRENT_VERSION=$VERSION" >> $GITHUB_ENV
 

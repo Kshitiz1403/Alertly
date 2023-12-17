@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/Kshitiz1403/Alertly/compare/v0.2.0...v0.3.0) (2023-12-17)
+
+
+### Features
+
+* google auth login via android client ([ac10917](https://github.com/Kshitiz1403/Alertly/commit/ac109178661d30dd0ee7a4c9851961247f740c40))
+
+
+
 # [0.2.0](https://github.com/Kshitiz1403/Alertly/compare/v0.1.0...v0.2.0) (2023-12-16)
 
 

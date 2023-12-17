@@ -34,7 +34,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           git-path: ./android_client
-          pre-commit: ./pre-commit-android.js
+          pre-commit: ./.github/workflows/pre-commit-android.js
           skip-version-file: true
 
       - name: Update Android Build Gradle Version

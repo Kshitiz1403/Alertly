@@ -18,7 +18,8 @@ export class UserRepository {
             ${UsersTable.given_name},
             ${UsersTable.family_name},
             ${UsersTable.email_verified}
-        ) VALUES($1, $2, $3, $4, $5, $6) RETURNING *`;
+        ) VALUES($1, $2, $3, $4, $5, $6) 
+        ON CONFLICT (${UsersTable.id}) DO UPDATE SET ${UsersTable.last_login}=now()  RETURNING *`;
     const res = await this.db.query(query, [id, email, picture, given_name, family_name, email_verified]);
     return res.rows[0] as UsersModel;
   }

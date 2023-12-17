@@ -1,8 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { Inject, Service } from 'typedi';
 import { Logger } from 'winston';
-import fs from 'fs';
-import { GoogleAuthCallbackRepository } from '@/repositories/googleAuthCallbackRepository';
 import AuthService from '@/services/authService';
 import { Result } from '@/api/util/result';
 
@@ -10,14 +8,13 @@ import { Result } from '@/api/util/result';
 export class GoogleAuthController {
   protected logger: Logger;
   protected authService: AuthService;
-  protected googleAuthCallbackRepo: GoogleAuthCallbackRepository;
   constructor(@Inject('logger') logger: Logger, authService: AuthService) {
     this.logger = logger;
     this.authService = authService;
   }
+
   public callback = async (req: Request, res: Response, next: NextFunction) => {
     this.logger.debug('Calling Google Callback endpoint');
-    fs.writeFileSync('./callback.json', JSON.stringify(req.query));
 
     try {
       const { code, scope, authuser, prompt, state } = req.query as {
@@ -27,7 +24,7 @@ export class GoogleAuthController {
         prompt: string;
         state: string;
       };
-      await this.authService.saveGoogleCallback({
+      await this.authService.handleGoogleCallback({
         AuthUser: authuser,
         OneTimeCode: code,
         Prompt: prompt,
@@ -36,7 +33,18 @@ export class GoogleAuthController {
       });
       return res.status(200).json(Result.success('Google Authentication Callback successfull'));
     } catch (error) {
-      this.logger.error(error.stack);
+      return next(error);
+    }
+  };
+
+  public login = async (req: Request, res: Response, next: NextFunction) => {
+    this.logger.debug('Calling Login endpoint');
+
+    try {
+      const id_token = req.body.id_token as string;
+      const data = await this.authService.loginByGoogle(id_token);
+      return res.status(200).json(Result.success(data));
+    } catch (error) {
       return next(error);
     }
   };

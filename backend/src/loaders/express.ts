@@ -5,6 +5,9 @@ import config from '@/config';
 import LoggerInstance from './logger';
 import { Result } from '@/api/util/result';
 import path from 'path';
+import swaggerDocs, { swaggerSpec } from './swagger';
+import swaggerUI from 'swagger-ui-express';
+
 export default ({ app }: { app: express.Application }) => {
   /**
    * Health Check endpoints
@@ -32,6 +35,10 @@ export default ({ app }: { app: express.Application }) => {
 
   // Transforms the raw string of req.body into json
   app.use(express.json());
+
+  // Docs routes
+  swaggerDocs(app);
+
   // Load API routes
   app.use(config.api.prefix, routes());
 
@@ -51,6 +58,7 @@ export default ({ app }: { app: express.Application }) => {
       LoggerInstance.error('🔥 error: %o', err);
       return res.status(err.status).json(Result.error(err));
     }
+    LoggerInstance.error(err.stack || '%o', err);
     return next(err);
   });
   app.use((err, req, res, next) => {

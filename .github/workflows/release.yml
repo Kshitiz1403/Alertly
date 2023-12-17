@@ -27,6 +27,7 @@ jobs:
           VERSION=$(grep 'versionName = ' android_client/app/build.gradle.kts | awk -F '"' '{print $2}')
           echo "Current Gradle Version: $VERSION"
           echo "export CURRENT_VERSION=$VERSION" >> $GITHUB_ENV
+          echo ${{github.event.commits}}
 
       - name: Conventional Changelog Action Android
         id: changelog-android

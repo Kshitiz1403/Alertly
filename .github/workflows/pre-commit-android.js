@@ -6,7 +6,8 @@ exports.preCommit = (props) => {
   console.log(currentVersion);
 
   // Parse commits to determine version bump type
-  const bumpType = determineBumpType(props.commits);
+  //   const bumpType = determineBumpType(props.commits);
+  const bumpType = "minor";
 
   // Calculate new version based on bump type and current version
   const newVersion = applyBump(currentVersion, bumpType);

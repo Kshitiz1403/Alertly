@@ -1,9 +1,13 @@
-# [0.4.0](https://github.com/Kshitiz1403/Alertly/compare/v0.3.2...v0.4.0) (2023-12-17)
+# [0.5.0](https://github.com/Kshitiz1403/Alertly/compare/v0.4.0...v0.5.0) (2023-12-17)
 
 
 ### Features
 
-* Setting up android client ([7914974](https://github.com/Kshitiz1403/Alertly/commit/791497469a5d439b0a939bffc1327c47b432f1aa))
+* create group functionality ([3581d2c](https://github.com/Kshitiz1403/Alertly/commit/3581d2ceae3f434f60a62c5c69794b1d53f7f261))
+
+
+
+# [0.4.0](https://github.com/Kshitiz1403/Alertly/compare/v0.3.2...v0.4.0) (2023-12-17)
 
 
 
@@ -31,20 +35,6 @@
 ### Features
 
 * google auth login via android client ([ac10917](https://github.com/Kshitiz1403/Alertly/commit/ac109178661d30dd0ee7a4c9851961247f740c40))
-
-
-
-# [0.2.0](https://github.com/Kshitiz1403/Alertly/compare/v0.1.0...v0.2.0) (2023-12-16)
-
-
-### Bug Fixes
-
-* redundant logging ([19f2a3d](https://github.com/Kshitiz1403/Alertly/commit/19f2a3d757ed5ff96ab0769bdcd971a636756dbb))
-
-
-### Features
-
-* google authentication callback, sql migrations ([4444b1c](https://github.com/Kshitiz1403/Alertly/commit/4444b1c65e47ff678109aa005e237c906ce361ff))
 
 
 

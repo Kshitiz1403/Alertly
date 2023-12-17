@@ -34,11 +34,12 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           git-path: ./android_client
-          pre-commit: ./pre-commit-android.js
+          pre-commit: ./.github/workflows/pre-commit-android.js
           skip-version-file: true
 
       - name: Update Android Build Gradle Version
         run: |
+          echo ${{steps.changelog-android.outputs.tag}}
           sed -i "s/\(versionName = \)\"[^\"]*\"/\1\"${{steps.changelog-android.outputs.tag}}\"/" android_client/app/build.gradle.kts
 
       - name: create release backend

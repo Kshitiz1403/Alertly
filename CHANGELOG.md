@@ -1,3 +1,12 @@
+# [0.7.0](https://github.com/Kshitiz1403/Alertly/compare/v0.6.0...v0.7.0) (2023-12-17)
+
+
+### Features
+
+* pinning/unpinning group ([6b91272](https://github.com/Kshitiz1403/Alertly/commit/6b91272bc70163ca6cea5a2e70fda125b9a33557))
+
+
+
 # [0.6.0](https://github.com/Kshitiz1403/Alertly/compare/v0.5.0...v0.6.0) (2023-12-17)
 
 
@@ -26,15 +35,6 @@
 ### Bug Fixes
 
 * swagger request body ([5af7d88](https://github.com/Kshitiz1403/Alertly/commit/5af7d88c3b3f5f7dd24d5756ff7fec89db1d3219))
-
-
-
-## [0.3.1](https://github.com/Kshitiz1403/Alertly/compare/v0.3.0...v0.3.1) (2023-12-17)
-
-
-### Bug Fixes
-
-* add google-auth-client-id from environment ([8ac9164](https://github.com/Kshitiz1403/Alertly/commit/8ac9164b4823a981811173ce4cc439c16a49bac3))
 
 
 

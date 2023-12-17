@@ -1,3 +1,12 @@
+# [0.6.0](https://github.com/Kshitiz1403/Alertly/compare/v0.5.0...v0.6.0) (2023-12-17)
+
+
+### Features
+
+* get all groups for user, get group alerts ([7c34d2b](https://github.com/Kshitiz1403/Alertly/commit/7c34d2bb297429ee84f3ce4a14b8b61ff823b09c))
+
+
+
 # [0.5.0](https://github.com/Kshitiz1403/Alertly/compare/v0.4.0...v0.5.0) (2023-12-17)
 
 
@@ -26,15 +35,6 @@
 ### Bug Fixes
 
 * add google-auth-client-id from environment ([8ac9164](https://github.com/Kshitiz1403/Alertly/commit/8ac9164b4823a981811173ce4cc439c16a49bac3))
-
-
-
-# [0.3.0](https://github.com/Kshitiz1403/Alertly/compare/v0.2.0...v0.3.0) (2023-12-17)
-
-
-### Features
-
-* google auth login via android client ([ac10917](https://github.com/Kshitiz1403/Alertly/commit/ac109178661d30dd0ee7a4c9851961247f740c40))
 
 
 

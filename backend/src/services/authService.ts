@@ -33,12 +33,8 @@ export default class AuthService {
   };
 
   public loginByGoogle = async (id_token: string) => {
-    // const ticket = await this.client.verifyIdToken({ idToken: id_token, audience: config.googleAuth.clientID });
-    const t = decode_jwt(id_token);
-    console.log(t);
-    // const ticket = await this.client.verifyIdToken({ idToken: id_token, audience: config.googleAuth.clientID });
-    // const payload = ticket.getPayload();
-    const payload = t;
+    const ticket = await this.client.verifyIdToken({ idToken: id_token, audience: config.googleAuth.clientID });
+    const payload = ticket.getPayload();
 
     const { email, picture, given_name, family_name, email_verified, sub } = payload;
     const token = this.generateToken(sub, email, { picture, given_name, family_name, email_verified });

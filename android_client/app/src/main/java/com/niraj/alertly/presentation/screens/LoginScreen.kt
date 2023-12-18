@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,9 +34,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.niraj.alertly.BuildConfig
 import com.niraj.alertly.R
+import com.niraj.alertly.network.APIRepository
 import com.niraj.alertly.ui.theme.rubikFontFamily
 import com.stevdzasan.onetap.OneTapSignInWithGoogle
 import com.stevdzasan.onetap.rememberOneTapSignInState
+import kotlinx.coroutines.launch
 
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
@@ -76,7 +79,7 @@ fun LoginScreen() {
             }
         }
     }
-
+    val scope = rememberCoroutineScope()
     OneTapSignInWithGoogle(
         state = oneTapSignInState,
         clientId = BuildConfig.CLIENT_ID,

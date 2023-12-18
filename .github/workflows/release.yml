@@ -57,4 +57,4 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
-          script: cd Documents/Alertly/backend/ && start.sh
+          script: cd Documents/Alertly/backend/ && bash start.sh

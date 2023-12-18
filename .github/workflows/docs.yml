@@ -9,6 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v3
 
@@ -26,10 +28,13 @@ jobs:
         run: |
           cd generate-docs && npm run generate
           cat temp-data.md > ../README.md
+
       - name: Commit and Push Changes
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: |
-          git config --local user.email "kshitizagrawal@outlook.com"
-          git config --local user.name "Kshitiz Agrawal"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
 
           git add README.md
           git commit -m "Update README from Notion (CICD)"

@@ -37,6 +37,7 @@ export default class AuthService {
     const payload = ticket.getPayload();
 
     const { email, picture, given_name, family_name, email_verified, sub } = payload;
+
     const token = this.generateToken(sub, email, { picture, given_name, family_name, email_verified });
 
     await this.usersRepo.createUser(sub, email, { picture, email_verified, family_name, given_name });

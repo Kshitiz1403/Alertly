@@ -38,7 +38,7 @@ export class GoogleAuthController {
   };
 
   public login = async (req: Request, res: Response, next: NextFunction) => {
-    this.logger.debug('Calling Login endpoint');
+    this.logger.debug(`Calling Login endpoint with token - ${req.body.id_token.length > 0 ? '***' : ''}`);
 
     try {
       const id_token = req.body.id_token as string;

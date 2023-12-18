@@ -20,6 +20,7 @@ const isUserInGroup = async (req: IRequest, res: IResponse, next: INextFunction)
         status: 401,
         message: 'you are not authorized to access this resource',
       };
+    logger.info(`User ${user_id} granted access to the group ${group_id}`);
     return next();
   } catch (error) {
     return next(error);

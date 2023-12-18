@@ -1,4 +1,4 @@
-name: Update README with from Notion
+name: Update README from Notion
 
 on:
   schedule:

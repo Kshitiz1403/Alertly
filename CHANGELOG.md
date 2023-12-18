@@ -1,3 +1,12 @@
+## [0.7.1](https://github.com/Kshitiz1403/Alertly/compare/v0.7.0...v0.7.1) (2023-12-18)
+
+
+### Bug Fixes
+
+* replace mock value by real google token ([5b87ddf](https://github.com/Kshitiz1403/Alertly/commit/5b87ddffba69e8faf0a4e3cf667d9dd7a121cf16))
+
+
+
 # [0.7.0](https://github.com/Kshitiz1403/Alertly/compare/v0.6.0...v0.7.0) (2023-12-17)
 
 
@@ -26,15 +35,6 @@
 
 
 # [0.4.0](https://github.com/Kshitiz1403/Alertly/compare/v0.3.2...v0.4.0) (2023-12-17)
-
-
-
-## [0.3.2](https://github.com/Kshitiz1403/Alertly/compare/v0.3.1...v0.3.2) (2023-12-17)
-
-
-### Bug Fixes
-
-* swagger request body ([5af7d88](https://github.com/Kshitiz1403/Alertly/commit/5af7d88c3b3f5f7dd24d5756ff7fec89db1d3219))
 
 
 

@@ -1,0 +1,17 @@
+{
+  "name": "generate-docs",
+  "version": "1.0.0",
+  "description": "Package to generate markdown from Notion to export it via Github Actions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate": "node index.js"
+  },
+  "author": "Kshitiz Agrawal",
+  "license": "ISC",
+  "dependencies": {
+    "@notionhq/client": "^2.2.14",
+    "notion-to-md": "^3.1.1"
+  },
+  "type": "module"
+}

@@ -1,0 +1,36 @@
+name: Update README with from Notion
+
+on:
+  schedule:
+    - cron: "0 */6 * * *" # Called every 6 hours
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Install App Dependencies
+        run: npm install
+
+      - name: Generate Docs
+        env:
+          NOTION_TOKEN: ${{secrets.NOTION_TOKEN}}
+        run: |
+          cd generate-docs && npm run generate
+          cat temp-data.md > README.md
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "kshitizagrawal@outlook.com"
+          git config --local user.name "Kshitiz Agrawal"
+
+          git add README.md
+          git commit -m "Update README from Notion (CICD)"
+          git push

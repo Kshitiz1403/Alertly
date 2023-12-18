@@ -48,3 +48,13 @@ jobs:
           tag_name: ${{ steps.changelog-android.outputs.tag }}
           release_name: ${{ steps.changelog-android.outputs.tag }}
           body: ${{ steps.changelog-android.outputs.clean_changelog }}
+
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@v1.0.0
+        if: steps.changelog-backend.outputs.skipped == 'false'
+        with:
+          host: ${{ secrets.SSH_HOST}}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: cd Documents/Alertly/backend/ && start.sh

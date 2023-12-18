@@ -1,3 +1,12 @@
+# [0.11.0](https://github.com/Kshitiz1403/Alertly/compare/v0.10.1...v0.11.0) (2023-12-18)
+
+
+### Features
+
+* logging ([497a040](https://github.com/Kshitiz1403/Alertly/commit/497a040b2909f83185352c1a72bf4dc4e347f932))
+
+
+
 ## [0.10.1](https://github.com/Kshitiz1403/Alertly/compare/v0.10.0...v0.10.1) (2023-12-18)
 
 
@@ -21,15 +30,6 @@
 
 
 # [0.8.0](https://github.com/Kshitiz1403/Alertly/compare/v0.7.1...v0.8.0) (2023-12-18)
-
-
-
-## [0.7.1](https://github.com/Kshitiz1403/Alertly/compare/v0.7.0...v0.7.1) (2023-12-18)
-
-
-### Bug Fixes
-
-* replace mock value by real google token ([5b87ddf](https://github.com/Kshitiz1403/Alertly/commit/5b87ddffba69e8faf0a4e3cf667d9dd7a121cf16))
 
 
 

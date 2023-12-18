@@ -1,40 +1,9 @@
-## [0.7.1](https://github.com/Kshitiz1403/Alertly/compare/v0.7.0...v0.7.1) (2023-12-18)
-
-
-### Bug Fixes
-
-* replace mock value by real google token ([5b87ddf](https://github.com/Kshitiz1403/Alertly/commit/5b87ddffba69e8faf0a4e3cf667d9dd7a121cf16))
-
-
-
-# [0.7.0](https://github.com/Kshitiz1403/Alertly/compare/v0.6.0...v0.7.0) (2023-12-17)
+# [0.8.0](https://github.com/Kshitiz1403/Alertly/compare/v0.7.1...v0.8.0) (2023-12-18)
 
 
 ### Features
 
-* pinning/unpinning group ([6b91272](https://github.com/Kshitiz1403/Alertly/commit/6b91272bc70163ca6cea5a2e70fda125b9a33557))
-
-
-
-# [0.6.0](https://github.com/Kshitiz1403/Alertly/compare/v0.5.0...v0.6.0) (2023-12-17)
-
-
-### Features
-
-* get all groups for user, get group alerts ([7c34d2b](https://github.com/Kshitiz1403/Alertly/commit/7c34d2bb297429ee84f3ce4a14b8b61ff823b09c))
-
-
-
-# [0.5.0](https://github.com/Kshitiz1403/Alertly/compare/v0.4.0...v0.5.0) (2023-12-17)
-
-
-### Features
-
-* create group functionality ([3581d2c](https://github.com/Kshitiz1403/Alertly/commit/3581d2ceae3f434f60a62c5c69794b1d53f7f261))
-
-
-
-# [0.4.0](https://github.com/Kshitiz1403/Alertly/compare/v0.3.2...v0.4.0) (2023-12-17)
+* Added launcher icon ([96d8091](https://github.com/Kshitiz1403/Alertly/commit/96d809125367db948320adda1a9e331af0001fb3))
 
 
 

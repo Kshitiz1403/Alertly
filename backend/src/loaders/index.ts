@@ -4,6 +4,7 @@ import postgresLoader from './postgres';
 import Logger from './logger';
 
 export default async ({ expressApp }) => {
+  Logger.info('✌️ Migrations ran');
   await postgresLoader.connect();
 
   Logger.info('✌️ DB loaded and connected!');

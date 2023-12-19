@@ -262,3 +262,14 @@ Success: 200
 }
 ```
 
+
+Unauthorized: 401
+
+
+```json
+{
+    "success": false,
+    "data": "the token doesn't exist or is expired"
+}
+```
+

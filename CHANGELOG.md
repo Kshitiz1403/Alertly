@@ -1,3 +1,12 @@
+# [0.12.0](https://github.com/Kshitiz1403/Alertly/compare/v0.11.0...v0.12.0) (2023-12-19)
+
+
+### Features
+
+* ability to join group via access code ([88be6f6](https://github.com/Kshitiz1403/Alertly/commit/88be6f6ad53e65c7886024746dee4cd6f357a14b))
+
+
+
 # [0.11.0](https://github.com/Kshitiz1403/Alertly/compare/v0.10.1...v0.11.0) (2023-12-18)
 
 
@@ -26,10 +35,6 @@
 
 
 # [0.9.0](https://github.com/Kshitiz1403/Alertly/compare/v0.8.0...v0.9.0) (2023-12-18)
-
-
-
-# [0.8.0](https://github.com/Kshitiz1403/Alertly/compare/v0.7.1...v0.8.0) (2023-12-18)
 
 
 

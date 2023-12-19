@@ -5,7 +5,7 @@ data class LoginResponse(
     val success: Boolean
 )
 data class Data(
-    val email: String,
-    val sub: String,
-    val token: String
+    val email: String = "",
+    val sub: String = "",
+    val token: String = ""
 )

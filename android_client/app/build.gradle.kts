@@ -4,6 +4,9 @@ import java.util.Properties
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -27,6 +30,7 @@ android {
         val apiKey = Properties()
         apiKey.load(project.rootProject.file("local.properties").inputStream())
         buildConfigField("String", "CLIENT_ID", apiKey.getProperty("CLIENT_ID"))
+        buildConfigField("String", "BASE_URL", apiKey.getProperty("BASE_URL"))
     }
 
     buildTypes {
@@ -39,18 +43,18 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
 
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.4.3"
     }
     packaging {
         resources {
@@ -79,4 +83,23 @@ dependencies {
 
     // Google Sign in
     implementation("com.github.stevdza-san:OneTapCompose:1.0.0")
+
+    //RETROFIT
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+
+    // HILT
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
+
+    // VIEWMODEL
+
+    val lifecycle_version = "2.6.1"
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
+}
+
+kapt {
+    correctErrorTypes = true
 }

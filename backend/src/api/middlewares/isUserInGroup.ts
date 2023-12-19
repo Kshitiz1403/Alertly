@@ -23,6 +23,8 @@ const isUserInGroup = async (req: IRequest, res: IResponse, next: INextFunction)
     logger.info(`User ${user_id} granted access to the group ${group_id}`);
     return next();
   } catch (error) {
+    logger.info(`User ${user_id} denied access to the group ${req.params.group_id}`);
+
     return next(error);
   }
 };

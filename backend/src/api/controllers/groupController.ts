@@ -74,4 +74,31 @@ export class GroupController {
       return next(error);
     }
   };
+
+  public getAccessTokenForGroup = async (req: IRequest, res: IResponse, next: INextFunction) => {
+    this.logger.debug('Calling Get Acess Token for Group endpoint with query: %o', req.params);
+    try {
+      const { group_id } = req.params;
+      if (isNaN(+group_id)) throw 'invalid group id';
+
+      const access_token = await this.groupService.getAccessTokenForGroup(req.currentUser.sub, +group_id);
+
+      return res.status(200).json(Result.success(access_token));
+    } catch (error) {
+      return next(error);
+    }
+  };
+
+  public joinGroupByToken = async (req: IRequest, res: IResponse, next: INextFunction) => {
+    this.logger.debug('Calling Join Group by Acess Token with body: %o', req.body);
+    try {
+      const accessToken = req.body.access_token;
+      const { sub } = req.currentUser;
+      const group = await this.groupService.joinWithAccessToken(sub, accessToken);
+
+      return res.status(200).json(Result.success(group));
+    } catch (error) {
+      return next(error);
+    }
+  };
 }

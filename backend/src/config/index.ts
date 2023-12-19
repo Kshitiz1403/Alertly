@@ -22,6 +22,8 @@ export default {
     client_secret: process.env.GOOGLE_AUTH_CLIENT_SECRET,
     redirect_uri: process.env.GOOGLE_AUTH_REDIRECT_URI,
   },
+
+  totpSecret: process.env.TOTP_SECRET,
   /**
    * Your secret sauce
    */

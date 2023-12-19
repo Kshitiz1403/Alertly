@@ -199,3 +199,66 @@ Unauthorized: 401
 }
 ```
 
+
+### GET /groups/{group_id}/access_token
+
+
+Gets the access token for a group for users to join in. (Expires every 30 seconds). (TOTP based)
+
+
+Response:
+
+
+Success: 200
+
+
+```json
+{
+    "success": true,
+    "data": "1234"
+}
+```
+
+
+Unauthorized: 401
+
+
+```json
+{
+    "success": false,
+    "data": "you are not authorized to access this resource"
+}
+```
+
+
+### POST /groups/join
+
+
+For joining a group with a given access token
+
+
+Request Body- 
+
+
+```json
+{
+  "access_token": "123456",
+}
+```
+
+
+Response:
+
+
+Success: 200
+
+
+```json
+{
+    "success": true,
+    "data": {
+        "group_id": 7
+    }
+}
+```
+

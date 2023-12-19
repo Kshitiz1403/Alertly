@@ -95,4 +95,13 @@ export default (app: Router) => {
   group_routes.get('/:group_id/pin', middlewares.isAuth, middlewares.isUserInGroup, ctrl.pinGroup);
 
   group_routes.get('/:group_id/unpin', middlewares.isAuth, middlewares.isUserInGroup, ctrl.unpinGroup);
+
+  group_routes.get(
+    '/:group_id/access_token',
+    middlewares.isAuth,
+    middlewares.isUserInGroup,
+    ctrl.getAccessTokenForGroup,
+  );
+
+  group_routes.post('/join', middlewares.isAuth, ctrl.joinGroupByToken);
 };

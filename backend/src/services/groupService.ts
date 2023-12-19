@@ -43,4 +43,47 @@ export class GroupService {
     await this.groupRepository.unpinGroupForUser(user_id, group_id);
     return;
   };
+
+  public getAccessTokenForGroup = async (userID, group_id: number) => {
+    /*
+    TODO
+      - Generate a hash for a group_id along with a salt.
+      - Convert hash to base32.
+      - Use this base32 string to sign a TOTP at the current time.
+      */
+
+    try {
+      const token = await this.groupRepository.getTokenForGroup(group_id);
+      return token.token;
+    } catch (error) {
+      try {
+        const token = await this.groupRepository.createTokenForGroup(this.generateOTP(6), userID, group_id);
+        return token.token;
+      } catch (error) {
+        throw error;
+      }
+    }
+  };
+
+  public joinWithAccessToken = async (userId: string, accessToken: string) => {
+    try {
+      const group = await this.groupRepository.getGroupByToken(accessToken);
+
+      const currentTime = new Date();
+      const expirationTime = new Date(group.created_at);
+      expirationTime.setTime(expirationTime.getMinutes() + 30); // 30 mins expiry
+
+      if (currentTime < expirationTime) throw { status: 401, message: "the token doesn't exist or is expired" };
+
+      await this.groupRepository.joinUserToGroup(userId, group.group_id);
+
+      return { group_id: group.group_id };
+    } catch (error) {
+      throw { status: 401, message: "the token doesn't exist or is expired" };
+    }
+  };
+
+  private generateOTP = (length: number) => {
+    return Math.random().toFixed(length).substr(-length);
+  };
 }

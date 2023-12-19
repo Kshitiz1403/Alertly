@@ -1,4 +1,5 @@
 import { DB_TABLES } from '@/enums/DB_TABLES';
+import { GroupTokens } from '@/models/GroupTokens';
 import { GroupsModel, GroupsTable } from '@/models/Groups';
 import { UserGroupsTable } from '@/models/UserGroups';
 import { Client } from 'pg';
@@ -43,6 +44,20 @@ export class GroupRepository {
     }
   };
 
+  public joinUserToGroup = async (userID: string, group_id: number) => {
+    try {
+      const userGroupInsertQuery = `INSERT INTO user_groups (user_id, group_id) VALUES ($1, $2) RETURNING group_id`;
+
+      const userGroupInsertValues = [userID, group_id];
+
+      const result = await this.db.query(userGroupInsertQuery, userGroupInsertValues);
+
+      return result.rows[0] as number;
+    } catch (error) {
+      throw error;
+    }
+  };
+
   public getGroupsForUser = async (userID: string) => {
     try {
       const query = `SELECT groups.group_id, user_groups.pinned, groups.group_name, groups.description, user_groups.is_admin, groups.created_at FROM groups
@@ -81,5 +96,26 @@ export class GroupRepository {
     const values = [user_id, group_id];
     const result = await this.db.query(query, values);
     return result.rows[0].user_exists_in_group as boolean;
+  };
+
+  public getTokenForGroup = async (group_id: number) => {
+    const query = `SELECT * FROM group_tokens WHERE group_id = $1 ORDER BY created_at DESC LIMIT 1;`;
+
+    const result = await this.db.query(query, [group_id]);
+    return result.rows[0] as GroupTokens;
+  };
+
+  public createTokenForGroup = async (token: string, created_by: string, group_id: number) => {
+    const query = `INSERT INTO group_tokens (token, created_by, group_id) VALUES ($1, $2, $3) returning token, group_id`;
+    const result = await this.db.query(query, [token, created_by, group_id]);
+
+    return result.rows[0] as { token: string; group_id: number };
+  };
+
+  public getGroupByToken = async (token: string) => {
+    const query = `SELECT * FROM group_tokens WHERE token = $1`;
+    const result = await this.db.query(query, [token]);
+
+    return result.rows[0] as GroupTokens;
   };
 }

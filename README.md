@@ -300,17 +300,17 @@ Success: 200
 
 ```json
 {
-    "success": true,
-    "data": {
-        "alert_id": 5,
-        "sent_at": "2023-12-20T11:55:12.077Z",
-        "given_name": "Niraj",
-        "family_name": "Patidar",
-        "user_id": "102904205778732515333",
-        "severity": "danger",
-				"title":"alert 1",
-		    "description":"some desc",
-    }
+  "success": true,
+  "data": {
+    "alert_id": 5,
+    "sent_at": "2023-12-20T11:55:12.077Z",
+    "given_name": "Niraj",
+    "family_name": "Patidar",
+    "user_id": "102904205778732515333",
+    "severity": "danger",
+    "title": "alert 1",
+    "description": "some desc"
+  }
 }
 ```
 

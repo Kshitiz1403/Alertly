@@ -1,16 +1,19 @@
 import { Inject, Service } from 'typedi';
-import { INextFunction, IRequest, IResponse } from '../types/express';
+import { IGroupRequest, INextFunction, IRequest, IResponse } from '../types/express';
 import { Logger } from 'winston';
 import { Result } from '../util/result';
 import { GroupService } from '@/services/groupService';
+import { AlertService } from '@/services/alertService';
 
 @Service()
 export class GroupController {
   protected logger: Logger;
   protected groupService: GroupService;
-  constructor(@Inject('logger') logger: Logger, groupService: GroupService) {
+  protected alertService: AlertService;
+  constructor(@Inject('logger') logger: Logger, groupService: GroupService, alertService: AlertService) {
     this.logger = logger;
     this.groupService = groupService;
+    this.alertService = alertService;
   }
 
   public getAllGroups = async (req: IRequest, res: IResponse, next: INextFunction) => {
@@ -97,6 +100,24 @@ export class GroupController {
       const group = await this.groupService.joinWithAccessToken(sub, accessToken);
 
       return res.status(200).json(Result.success(group));
+    } catch (error) {
+      return next(error);
+    }
+  };
+
+  public createAlert = async (req: IGroupRequest, res: IResponse, next: INextFunction) => {
+    this.logger.debug('Calling Create Alert endpoint with body %o', req.body);
+
+    try {
+      const { title, description, severity } = req.body;
+      const alert = await this.alertService.createAlert(
+        req.currentUser.sub,
+        req.group_id,
+        title,
+        description,
+        severity,
+      );
+      return res.status(200).json(Result.success(alert));
     } catch (error) {
       return next(error);
     }

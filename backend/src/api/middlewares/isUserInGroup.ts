@@ -1,9 +1,9 @@
 import { Logger } from 'winston';
-import { INextFunction, IRequest, IResponse } from '../types/express';
+import { IGroupRequest, INextFunction, IRequest, IResponse } from '../types/express';
 import Container from 'typedi';
 import { GroupRepository } from '@/repositories/groupRepository';
 
-const isUserInGroup = async (req: IRequest, res: IResponse, next: INextFunction) => {
+const isUserInGroup = async (req: IGroupRequest, res: IResponse, next: INextFunction) => {
   const logger: Logger = Container.get('logger');
 
   const user_id = req.currentUser.sub;
@@ -20,6 +20,7 @@ const isUserInGroup = async (req: IRequest, res: IResponse, next: INextFunction)
         status: 401,
         message: 'you are not authorized to access this resource',
       };
+    req.group_id = +group_id;
     logger.info(`User ${user_id} granted access to the group ${group_id}`);
     return next();
   } catch (error) {

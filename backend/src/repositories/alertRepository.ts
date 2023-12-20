@@ -34,4 +34,26 @@ export class AlertRepository {
     }[] = result.rows;
     return groupMessages;
   };
+
+  public createAlert = async (userID, groupID, title, description, severity: 'normal' | 'elevated' | 'danger') => {
+    try {
+      const query = `INSERT INTO alerts (group_id, user_id, title, description, severity) VALUES ($1, $2, $3, $4, $5) RETURNING alert_id, sent_at, user_id, severity as seve`;
+      const result = await this.db.query(query, [groupID, userID, title, description, severity]);
+      const { alert_id, sent_at, user_id, seve } = result.rows[0];
+
+      const userQuery = `SELECT given_name, family_name FROM users WHERE id = $1`;
+      const userResult = await this.db.query(userQuery, [userID]);
+      const { given_name, family_name } = userResult.rows[0];
+      return { alert_id, sent_at, given_name, family_name, user_id, severity: seve } as {
+        alert_id: number;
+        sent_at: Date;
+        given_name: string;
+        family_name: string;
+        user_id: string;
+        severity: string;
+      };
+    } catch (error) {
+      throw error;
+    }
+  };
 }

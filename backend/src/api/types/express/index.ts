@@ -5,4 +5,6 @@ type IRequest = Request & { currentUser: IToken };
 type IResponse = Response;
 type INextFunction = NextFunction;
 
-export { IRequest, IResponse, INextFunction };
+type IGroupRequest = Request & { currentUser: IToken; group_id: number };
+
+export { IRequest, IGroupRequest, IResponse, INextFunction };

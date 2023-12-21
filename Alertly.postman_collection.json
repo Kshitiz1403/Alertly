@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "cd6c04fc-4863-4998-85a0-18ed2a18602f",
+		"name": "Alertly",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16529398",
+		"_collection_link": "https://interstellar-rocket-751452.postman.co/workspace/Alertly~765090ed-99cd-46d5-a335-b215a0da93ce/collection/16529398-cd6c04fc-4863-4998-85a0-18ed2a18602f?action=share&source=collection_link&creator=16529398"
+	},
+	"item": [
+		{
+			"name": "Google",
+			"item": [
+				{
+					"name": "Google Auth",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/auth/google",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"google"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Join Group by Access Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDI5MDQyMDU3Nzg3MzI1MTUzMzMiLCJlbWFpbCI6Im5pcmFqcGF0aWRhcjgxQGdtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NJNDFfNXhjNllaNW9SNmlrZ3Y2bDhYVzd6Z2NxRkRwYW9aaU9uUy1KVUFabTlHPXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6Ik5pcmFqIiwiZmFtaWx5X25hbWUiOiJQYXRpZGFyIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImlhdCI6MTcwMjgxMjk3NywiZXhwIjoxNzAzNDE3Nzc3fQ.5GXbBA99JPjZD9i_qbI0S3jV-ldtRSS5VDB_3raoMwI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"access_token\":\"659932\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/groups/join",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"groups",
+						"join"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pin Group",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDI5MDQyMDU3Nzg3MzI1MTUzMzMiLCJlbWFpbCI6Im5pcmFqcGF0aWRhcjgxQGdtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NJNDFfNXhjNllaNW9SNmlrZ3Y2bDhYVzd6Z2NxRkRwYW9aaU9uUy1KVUFabTlHPXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6Ik5pcmFqIiwiZmFtaWx5X25hbWUiOiJQYXRpZGFyIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImlhdCI6MTcwMjgxMjk3NywiZXhwIjoxNzAzNDE3Nzc3fQ.5GXbBA99JPjZD9i_qbI0S3jV-ldtRSS5VDB_3raoMwI"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/groups/7/pin",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"groups",
+						"7",
+						"pin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Group Access Token",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDI5MDQyMDU3Nzg3MzI1MTUzMzMiLCJlbWFpbCI6Im5pcmFqcGF0aWRhcjgxQGdtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NJNDFfNXhjNllaNW9SNmlrZ3Y2bDhYVzd6Z2NxRkRwYW9aaU9uUy1KVUFabTlHPXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6Ik5pcmFqIiwiZmFtaWx5X25hbWUiOiJQYXRpZGFyIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImlhdCI6MTcwMjgxMjk3NywiZXhwIjoxNzAzNDE3Nzc3fQ.5GXbBA99JPjZD9i_qbI0S3jV-ldtRSS5VDB_3raoMwI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/groups/7/access_token",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"groups",
+						"7",
+						"access_token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Alerts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDI5MDQyMDU3Nzg3MzI1MTUzMzMiLCJlbWFpbCI6Im5pcmFqcGF0aWRhcjgxQGdtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NJNDFfNXhjNllaNW9SNmlrZ3Y2bDhYVzd6Z2NxRkRwYW9aaU9uUy1KVUFabTlHPXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6Ik5pcmFqIiwiZmFtaWx5X25hbWUiOiJQYXRpZGFyIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImlhdCI6MTcwMjgxMjk3NywiZXhwIjoxNzAzNDE3Nzc3fQ.5GXbBA99JPjZD9i_qbI0S3jV-ldtRSS5VDB_3raoMwI"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/groups/123?pageNumber=1&pageSize=20",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"groups",
+						"123"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Groups",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDI5MDQyMDU3Nzg3MzI1MTUzMzMiLCJlbWFpbCI6Im5pcmFqcGF0aWRhcjgxQGdtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NJNDFfNXhjNllaNW9SNmlrZ3Y2bDhYVzd6Z2NxRkRwYW9aaU9uUy1KVUFabTlHPXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6Ik5pcmFqIiwiZmFtaWx5X25hbWUiOiJQYXRpZGFyIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImlhdCI6MTcwMjgxMjk3NywiZXhwIjoxNzAzNDE3Nzc3fQ.5GXbBA99JPjZD9i_qbI0S3jV-ldtRSS5VDB_3raoMwI"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/api/groups/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"groups",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Alert",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDI5MDQyMDU3Nzg3MzI1MTUzMzMiLCJlbWFpbCI6Im5pcmFqcGF0aWRhcjgxQGdtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NJNDFfNXhjNllaNW9SNmlrZ3Y2bDhYVzd6Z2NxRkRwYW9aaU9uUy1KVUFabTlHPXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6Ik5pcmFqIiwiZmFtaWx5X25hbWUiOiJQYXRpZGFyIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImlhdCI6MTcwMjgxMjk3NywiZXhwIjoxNzAzNDE3Nzc3fQ.5GXbBA99JPjZD9i_qbI0S3jV-ldtRSS5VDB_3raoMwI"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"alert 1\",\r\n    \"description\":\"some desc\",\r\n    \"severity\":\"danger\"\r\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/groups/7/alert",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"groups",
+						"7",
+						"alert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Group",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDI5MDQyMDU3Nzg3MzI1MTUzMzMiLCJlbWFpbCI6Im5pcmFqcGF0aWRhcjgxQGdtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NJNDFfNXhjNllaNW9SNmlrZ3Y2bDhYVzd6Z2NxRkRwYW9aaU9uUy1KVUFabTlHPXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6Ik5pcmFqIiwiZmFtaWx5X25hbWUiOiJQYXRpZGFyIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImlhdCI6MTcwMjgxMjk3NywiZXhwIjoxNzAzNDE3Nzc3fQ.5GXbBA99JPjZD9i_qbI0S3jV-ldtRSS5VDB_3raoMwI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"group_name\": \"test-group\",\r\n    \"description\": \"yoyo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/groups/create",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"groups",
+						"create"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,30 +1,58 @@
 package com.niraj.alertly
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.ui.Modifier
-import com.niraj.alertly.presentation.screens.LoginScreen.LoginScreen
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.platform.LocalContext
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.preferencesDataStore
+import androidx.navigation.compose.rememberNavController
+import com.niraj.alertly.navigation.SetupNavGraph
 import com.niraj.alertly.ui.theme.AlertlyTheme
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore("AuthToken1")
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             AlertlyTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    LoginScreen()
-                }
+                val ctx = LocalContext.current
+                val navController = rememberNavController()
+                SetupNavGraph(startDestination = getStartDestination(ctx), navController = navController)
             }
         }
+    }
+}
+
+private fun getStartDestination(ctx: Context) : String {
+    return runBlocking {
+        val token = loadToken(ctx)
+        if(token == "-1") {
+            "login_screen"
+        } else {
+            "home_screen"
+        }
+    }
+}
+
+suspend fun loadToken(ctx: Context): String {
+    val prefKey = stringPreferencesKey("token")
+    val preference = ctx.dataStore.data.first()
+    return preference[prefKey] ?: "-1"
+}
+
+suspend fun saveToken(token: String, ctx: Context){
+    val prefKey = stringPreferencesKey("token")
+    ctx.dataStore.edit {
+        it[prefKey] = token
     }
 }

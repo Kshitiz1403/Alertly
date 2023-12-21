@@ -1,40 +1,11 @@
-# [0.15.0](https://github.com/Kshitiz1403/Alertly/compare/v0.14.0...v0.15.0) (2023-12-20)
+# [0.16.0](https://github.com/Kshitiz1403/Alertly/compare/v0.15.0...v0.16.0) (2023-12-21)
 
 
 ### Features
 
-* add title, description to create alert response ([e54913b](https://github.com/Kshitiz1403/Alertly/commit/e54913bc1f79f1f2c04ff082470bbc25d504a302))
-
-
-
-# [0.14.0](https://github.com/Kshitiz1403/Alertly/compare/v0.13.0...v0.14.0) (2023-12-20)
-
-
-### Features
-
-* create alert ([e8c9e79](https://github.com/Kshitiz1403/Alertly/commit/e8c9e790f1ad37c03069eea57aafdb19988124a5))
-
-
-
-# [0.13.0](https://github.com/Kshitiz1403/Alertly/compare/v0.12.0...v0.13.0) (2023-12-19)
-
-
-
-# [0.12.0](https://github.com/Kshitiz1403/Alertly/compare/v0.11.0...v0.12.0) (2023-12-19)
-
-
-### Features
-
-* ability to join group via access code ([88be6f6](https://github.com/Kshitiz1403/Alertly/commit/88be6f6ad53e65c7886024746dee4cd6f357a14b))
-
-
-
-# [0.11.0](https://github.com/Kshitiz1403/Alertly/compare/v0.10.1...v0.11.0) (2023-12-18)
-
-
-### Features
-
-* logging ([497a040](https://github.com/Kshitiz1403/Alertly/commit/497a040b2909f83185352c1a72bf4dc4e347f932))
+* Added API base structure, tested api client ([bed0e9b](https://github.com/Kshitiz1403/Alertly/commit/bed0e9bc928c55ec745c45855471c38607aeebb0))
+* Added dependency injection, and some logic related to Login ([d247e54](https://github.com/Kshitiz1403/Alertly/commit/d247e541894d04210c3973a842f21fa9d4ff2841))
+* Added NavGraph.kt, and methods for saving and loading token ([26868fb](https://github.com/Kshitiz1403/Alertly/commit/26868fbefabf668548391b2d1c31c28a93906afc))
 
 
 

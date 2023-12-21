@@ -23,8 +23,7 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun providesNewsApi(retrofit: Retrofit) : AlertlyAPI {
+    fun providesAlertlyApi(retrofit: Retrofit) : AlertlyAPI {
         return retrofit.create(AlertlyAPI::class.java)
     }
-
 }

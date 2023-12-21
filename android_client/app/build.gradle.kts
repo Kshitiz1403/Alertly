@@ -81,6 +81,12 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+    // Datastore
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    // Compose Navigation
+    implementation("androidx.navigation:navigation-compose:2.5.3")
+
     // Google Sign in
     implementation("com.github.stevdza-san:OneTapCompose:1.0.0")
 

@@ -7,8 +7,9 @@ import com.niraj.alertly.network.AlertlyAPI
 import javax.inject.Inject
 
 class APIRepository @Inject constructor(
-    private val alertlyAPI: AlertlyAPI
+//    private val alertlyAPI: AlertlyAPI
 ) {
+    private val alertlyAPI = AlertlyAPI.getInstance();
     suspend fun Login(token: String): LoginResponse {
         val body = LoginRequest(id_token = token)
         val resp = alertlyAPI.login(body)

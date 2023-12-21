@@ -1,3 +1,12 @@
+# [0.15.0](https://github.com/Kshitiz1403/Alertly/compare/v0.14.0...v0.15.0) (2023-12-20)
+
+
+### Features
+
+* add title, description to create alert response ([e54913b](https://github.com/Kshitiz1403/Alertly/commit/e54913bc1f79f1f2c04ff082470bbc25d504a302))
+
+
+
 # [0.14.0](https://github.com/Kshitiz1403/Alertly/compare/v0.13.0...v0.14.0) (2023-12-20)
 
 
@@ -26,15 +35,6 @@
 ### Features
 
 * logging ([497a040](https://github.com/Kshitiz1403/Alertly/commit/497a040b2909f83185352c1a72bf4dc4e347f932))
-
-
-
-## [0.10.1](https://github.com/Kshitiz1403/Alertly/compare/v0.10.0...v0.10.1) (2023-12-18)
-
-
-### Bug Fixes
-
-* automatic deployment ([7797d9c](https://github.com/Kshitiz1403/Alertly/commit/7797d9c4a9afb324249ee28434ae72e8df877abb))
 
 
 

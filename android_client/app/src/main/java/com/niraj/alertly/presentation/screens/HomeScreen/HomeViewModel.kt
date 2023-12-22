@@ -1,9 +1,11 @@
 package com.niraj.alertly.presentation.screens.HomeScreen
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.niraj.alertly.DI.APIRepository
+import com.niraj.alertly.MyApplication
 import com.niraj.alertly.data.GroupData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -27,7 +29,19 @@ class HomeViewModel @Inject constructor() : ViewModel() {
             if(resp.success) {
                 _groupList.emit(resp.data)
             }
-            Log.d("RESP", resp.toString())
+            Toast.makeText(MyApplication.appContext, "Groups Updates", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun createGroup(groupName: String, groupDescription: String) {
+        viewModelScope.launch {
+            val resp = apiRepository.createGroup(groupName, groupDescription)
+            if(resp.success) {
+                Toast.makeText(MyApplication.appContext, "Create Group $groupName successfully", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(MyApplication.appContext, "Create Group $groupName failed", Toast.LENGTH_LONG).show()
+            }
+            getGroupList()
         }
     }
 

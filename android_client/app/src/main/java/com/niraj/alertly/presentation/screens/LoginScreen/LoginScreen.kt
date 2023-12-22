@@ -48,9 +48,7 @@ import kotlinx.coroutines.launch
 fun LoginScreen(
     navigateToHome: () -> Unit
 ) {
-    val isSigningInState by remember {
-        mutableStateOf(false)
-    }
+
     val oneTapSignInState = rememberOneTapSignInState()
     val loginViewModel: LoginViewModel = viewModel()
     val loginState by loginViewModel.loginState.collectAsState()

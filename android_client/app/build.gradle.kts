@@ -104,6 +104,9 @@ dependencies {
     val lifecycle_version = "2.6.1"
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
+
+    //COIL
+    implementation("io.coil-kt:coil-compose:2.2.1")
 }
 
 kapt {

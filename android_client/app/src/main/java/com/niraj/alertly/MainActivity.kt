@@ -18,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
-val Context.dataStore: DataStore<Preferences> by preferencesDataStore("AuthToken1")
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore("AuthToken")
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +27,7 @@ class MainActivity : ComponentActivity() {
             AlertlyTheme {
                 val ctx = LocalContext.current
                 val navController = rememberNavController()
+//                deleteToken(ctx)
                 SetupNavGraph(startDestination = getStartDestination(ctx), navController = navController)
             }
         }
@@ -56,3 +57,12 @@ suspend fun saveToken(token: String, ctx: Context){
         it[prefKey] = token
     }
 }
+
+//fun deleteToken(ctx: Context) {
+//    runBlocking {
+//        val prefKey = stringPreferencesKey("token")
+//        ctx.dataStore.edit {
+//            it[prefKey] = "-1"
+//        }
+//    }
+//}

@@ -51,8 +51,7 @@ export class GroupController {
       const { pageNumber, pageSize } = req.query;
 
       const alerts = await this.groupService.getAlertsInGroup(+group_id, +pageNumber, +pageSize);
-      const alertsWithUserImages = alerts.map(alert => ({ ...alert, sender_image_uri: getRandomUserImage() }));
-      return res.status(200).json(Result.success(alertsWithUserImages));
+      return res.status(200).json(Result.success(alerts));
     } catch (error) {
       return next(error);
     }

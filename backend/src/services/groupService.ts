@@ -1,3 +1,4 @@
+import getRandomUserImage from '@/api/util/randomUserImage';
 import { GroupsModel } from '@/models/Groups';
 import { AlertRepository } from '@/repositories/alertRepository';
 import { GroupRepository } from '@/repositories/groupRepository';
@@ -14,8 +15,8 @@ export class GroupService {
 
   public getAllGroupsForUser = async (userID: string) => {
     const groups = await this.groupRepository.getGroupsForUser(userID);
-
-    return groups;
+    const groupsWithImageURI = groups.map(group => ({ ...group, group_image_uri: getRandomUserImage() }));
+    return groupsWithImageURI;
   };
 
   public createGroupByUser = async (

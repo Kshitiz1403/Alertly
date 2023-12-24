@@ -1,4 +1,4 @@
-name: Update README from Notion
+name: docs
 
 on:
   schedule:
@@ -37,5 +37,11 @@ jobs:
           git config --local user.name "GitHub Action"
 
           git add README.md
-          git commit -m "Update README from Notion (CICD)"
-          git push
+
+          changes=$(git diff --cached)
+
+          if [ -n "$changes" ]; then
+              echo "Changes detected, committing"
+              git commit -m "Update README.md from Notion (CICD)"
+              git push
+          fi

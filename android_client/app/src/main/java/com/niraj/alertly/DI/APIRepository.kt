@@ -9,6 +9,8 @@ import com.niraj.alertly.data.LoginResponse
 import com.niraj.alertly.data.MyGroupResponse
 import com.niraj.alertly.data.creategroup.CreateGroupRequest
 import com.niraj.alertly.data.creategroup.CreateGroupResponse
+import com.niraj.alertly.data.joingroup.JoinGroupRequest
+import com.niraj.alertly.data.joingroup.JoinGroupResponse
 import com.niraj.alertly.dataStore
 import com.niraj.alertly.network.AlertlyAPI
 import kotlinx.coroutines.flow.first
@@ -38,6 +40,17 @@ class APIRepository @Inject constructor(
         }
         val groupResp = MyGroupResponse(emptyList(), false)
         return groupResp
+    }
+
+    suspend fun joinGroup(accessToken: String) : JoinGroupResponse {
+        val authToken = "Bearer ${getToken(MyApplication.appContext)}"
+        val reqBody = JoinGroupRequest(accessToken)
+        val resp = alertlyAPI.joinGroup(authToken, reqBody)
+        if(resp.isSuccessful && resp.body() != null) {
+            return resp.body()!!
+        }
+        val joinGroupResp = JoinGroupResponse()
+        return joinGroupResp
     }
 
     suspend fun createGroup(groupName: String, groupDescription: String): CreateGroupResponse {

@@ -29,7 +29,19 @@ class HomeViewModel @Inject constructor() : ViewModel() {
             if(resp.success) {
                 _groupList.emit(resp.data)
             }
-            Toast.makeText(MyApplication.appContext, "Groups Updates", Toast.LENGTH_SHORT).show()
+            Toast.makeText(MyApplication.appContext, "Groups Updated", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun joinGroup(accessToken: String) {
+        viewModelScope.launch {
+            val resp = apiRepository.joinGroup(accessToken)
+            if(resp.success) {
+                Toast.makeText(MyApplication.appContext, "Group Successfully Joined 😄", Toast.LENGTH_SHORT).show()
+                getGroupList()
+            } else {
+                Toast.makeText(MyApplication.appContext, "Failed to join the group 😔", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

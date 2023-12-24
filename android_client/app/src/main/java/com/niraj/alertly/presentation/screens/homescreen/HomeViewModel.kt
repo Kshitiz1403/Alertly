@@ -1,6 +1,5 @@
-package com.niraj.alertly.presentation.screens.HomeScreen
+package com.niraj.alertly.presentation.screens.homescreen
 
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

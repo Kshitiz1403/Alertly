@@ -1,4 +1,4 @@
-package com.niraj.alertly.presentation.screens.LoginScreen
+package com.niraj.alertly.presentation.screens.loginscreen
 
 import android.content.Context
 import android.util.Log
@@ -6,9 +6,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.ViewModel
 import com.niraj.alertly.DI.APIRepository
-import com.niraj.alertly.data.Data
-import com.niraj.alertly.data.LoginResponse
-import com.niraj.alertly.data.LoginState
+import com.niraj.alertly.data.login.LoginState
 import com.niraj.alertly.dataStore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay

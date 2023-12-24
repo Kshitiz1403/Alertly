@@ -1,14 +1,16 @@
 package com.niraj.alertly.DI
 
 import android.content.Context
+import android.util.Log
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.niraj.alertly.MyApplication
-import com.niraj.alertly.data.Data
-import com.niraj.alertly.data.LoginRequest
-import com.niraj.alertly.data.LoginResponse
+import com.niraj.alertly.data.login.Data
+import com.niraj.alertly.data.login.LoginRequest
+import com.niraj.alertly.data.login.LoginResponse
 import com.niraj.alertly.data.MyGroupResponse
 import com.niraj.alertly.data.creategroup.CreateGroupRequest
 import com.niraj.alertly.data.creategroup.CreateGroupResponse
+import com.niraj.alertly.data.groupalerts.GetGroupAlertsResponse
 import com.niraj.alertly.data.joingroup.JoinGroupRequest
 import com.niraj.alertly.data.joingroup.JoinGroupResponse
 import com.niraj.alertly.dataStore
@@ -35,22 +37,20 @@ class APIRepository @Inject constructor(
     suspend fun getGroups(): MyGroupResponse {
         val authToken = "Bearer ${getToken(MyApplication.appContext)}"
         val resp = alertlyAPI.getGroups(authToken)
-        if(resp.isSuccessful && resp.body() != null) {
+        if (resp.isSuccessful && resp.body() != null) {
             return resp.body()!!
         }
-        val groupResp = MyGroupResponse(emptyList(), false)
-        return groupResp
+        return MyGroupResponse()
     }
 
-    suspend fun joinGroup(accessToken: String) : JoinGroupResponse {
+    suspend fun joinGroup(accessToken: String): JoinGroupResponse {
         val authToken = "Bearer ${getToken(MyApplication.appContext)}"
         val reqBody = JoinGroupRequest(accessToken)
         val resp = alertlyAPI.joinGroup(authToken, reqBody)
-        if(resp.isSuccessful && resp.body() != null) {
+        if (resp.isSuccessful && resp.body() != null) {
             return resp.body()!!
         }
-        val joinGroupResp = JoinGroupResponse()
-        return joinGroupResp
+        return JoinGroupResponse()
     }
 
     suspend fun createGroup(groupName: String, groupDescription: String): CreateGroupResponse {
@@ -58,11 +58,26 @@ class APIRepository @Inject constructor(
         val createGroupRequest = CreateGroupRequest(groupName, groupDescription)
         val resp = alertlyAPI.createGroup(authToken, createGroupRequest)
 
+        if (resp.isSuccessful && resp.body() != null) {
+            return resp.body()!!
+        }
+        return CreateGroupResponse()
+    }
+
+    suspend fun getGroupAlerts(
+        groupId: Int,
+        pageNumber: Int,
+        pageSize: Int
+    ): GetGroupAlertsResponse {
+        val authToken = "Bearer ${getToken(MyApplication.appContext)}"
+        Log.d("NIRAJ22", "Calling Alerts")
+
+        val resp = alertlyAPI.getGroupAlerts(authToken, groupId, pageNumber, pageSize)
+        Log.d("NIRAJ22", resp.body().toString())
         if(resp.isSuccessful && resp.body() != null) {
             return resp.body()!!
         }
-        val createGroupResponse = CreateGroupResponse()
-        return createGroupResponse
+        return GetGroupAlertsResponse()
     }
 
     fun getToken(ctx: Context): String {

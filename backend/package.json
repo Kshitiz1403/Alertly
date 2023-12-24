@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "heroku-postbuild": "npm run build",
-    "start": "nodemon",
+    "start": "ts-node -r tsconfig-paths/register --transpile-only ./src/app.ts",
+    "dev": "nodemon",
     "inspect": "nodemon --inspect src/app.ts",
     "test": "jest",
     "lint": "npm run lint:js ",

@@ -1,3 +1,12 @@
+# [0.21.0](https://github.com/Kshitiz1403/Alertly/compare/v0.20.0...v0.21.0) (2023-12-24)
+
+
+### Features
+
+* random group image ([75e1c9a](https://github.com/Kshitiz1403/Alertly/commit/75e1c9ab2bf7d4a51b42b4b098fa53324fbb323f))
+
+
+
 # [0.20.0](https://github.com/Kshitiz1403/Alertly/compare/v0.19.2...v0.20.0) (2023-12-24)
 
 
@@ -26,10 +35,6 @@
 
 
 # [0.19.0](https://github.com/Kshitiz1403/Alertly/compare/v0.18.0...v0.19.0) (2023-12-24)
-
-
-
-# [0.18.0](https://github.com/Kshitiz1403/Alertly/compare/v0.17.0...v0.18.0) (2023-12-22)
 
 
 

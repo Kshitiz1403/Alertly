@@ -1,3 +1,12 @@
+# [0.20.0](https://github.com/Kshitiz1403/Alertly/compare/v0.19.2...v0.20.0) (2023-12-24)
+
+
+### Features
+
+* random user images on get alerts ([6004147](https://github.com/Kshitiz1403/Alertly/commit/600414791b2b35134d613c77bb6ca2e38ce22d6a))
+
+
+
 ## [0.19.2](https://github.com/Kshitiz1403/Alertly/compare/v0.19.1...v0.19.2) (2023-12-24)
 
 
@@ -21,10 +30,6 @@
 
 
 # [0.18.0](https://github.com/Kshitiz1403/Alertly/compare/v0.17.0...v0.18.0) (2023-12-22)
-
-
-
-# [0.17.0](https://github.com/Kshitiz1403/Alertly/compare/v0.16.0...v0.17.0) (2023-12-22)
 
 
 

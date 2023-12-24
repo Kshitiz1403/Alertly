@@ -1,3 +1,12 @@
+# [0.22.0](https://github.com/Kshitiz1403/Alertly/compare/v0.21.0...v0.22.0) (2023-12-24)
+
+
+### Features
+
+* user image uri on group alerts ([078c42a](https://github.com/Kshitiz1403/Alertly/commit/078c42a04537d4d66ce02b2b7632fcb9ab7ec40c))
+
+
+
 # [0.21.0](https://github.com/Kshitiz1403/Alertly/compare/v0.20.0...v0.21.0) (2023-12-24)
 
 
@@ -31,10 +40,6 @@
 ### Bug Fixes
 
 * auto restart on server crash ([e244baa](https://github.com/Kshitiz1403/Alertly/commit/e244baa023b45e24114c83adebf02df857799a52))
-
-
-
-# [0.19.0](https://github.com/Kshitiz1403/Alertly/compare/v0.18.0...v0.19.0) (2023-12-24)
 
 
 

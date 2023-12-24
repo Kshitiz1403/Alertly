@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Build
@@ -27,6 +28,8 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -40,6 +43,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -48,8 +52,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.ImageLoader
 import coil.compose.AsyncImage
@@ -73,12 +79,26 @@ fun HomeScreen() {
     var newGroupDescription by remember {
         mutableStateOf("")
     }
-
     fun dismissAlertdialog() {
         showAlertDialog = false
         newGroupName = ""
         newGroupDescription = ""
     }
+
+    var showJoinGroupAlertDialog by remember {
+        mutableStateOf(false)
+    }
+    var accessTokenToJoinGroup by remember {
+        mutableStateOf("")
+    }
+
+
+    fun dismissJoinAlertDialog() {
+        showJoinGroupAlertDialog = false
+        accessTokenToJoinGroup = ""
+    }
+
+
     Surface(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -96,6 +116,22 @@ fun HomeScreen() {
                         }
                     }
                 )
+            },
+            floatingActionButton = {
+                FloatingActionButton(
+                    onClick = {
+                        showJoinGroupAlertDialog = true
+                    },
+                    shape = FloatingActionButtonDefaults.extendedFabShape
+                ) {
+                    Row (
+                        modifier = Modifier.padding(horizontal = 15.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ){
+                        Icon(imageVector = Icons.Default.Create, contentDescription = "Join Group Button")
+                        Text("Join Group")
+                    }
+                }
             }
         ) { paddingValues ->
             LazyColumn(
@@ -165,6 +201,58 @@ fun HomeScreen() {
         )
     }
 
+    if(showJoinGroupAlertDialog) {
+        AlertDialog(
+            onDismissRequest = {
+                dismissJoinAlertDialog()
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        homeViewModel.joinGroup(accessTokenToJoinGroup)
+                        dismissJoinAlertDialog()
+                    }
+                ) {
+                    Text("Join Group")
+                }
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = {
+                        dismissJoinAlertDialog()
+                    }
+                ) {
+                    Text("cancel")
+                }
+            },
+            icon = {
+                Icon(imageVector = Icons.Default.Add, contentDescription = "Join Group")
+            },
+            title = {
+                Text("Join Group")
+            },
+            text = {
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(15.dp)
+                ) {
+                    TextField(
+                        value = accessTokenToJoinGroup,
+                        onValueChange = {
+                            if(it.isDigitsOnly() && it.length < 7) {
+                                accessTokenToJoinGroup = it
+                            }
+                        },
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Decimal
+                        ),
+                        placeholder = {
+                            Text("Access Code")
+                        }
+                    )
+                }
+            }
+        )
+    }
 }
 
 @Composable
@@ -181,10 +269,6 @@ fun GroupItem(
         )
     ) {
         Row {
-//            val imageLoader = ImageLoader.Builder(LocalContext.current).diskCache {
-//
-//            }
-//            AsyncImage(model = , contentDescription = )
             AsyncImage(
                 model = "https://source.unsplash.com/random?${(0..100).random()}",
                 contentDescription = null,

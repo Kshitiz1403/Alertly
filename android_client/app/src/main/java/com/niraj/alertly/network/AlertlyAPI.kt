@@ -6,6 +6,8 @@ import com.niraj.alertly.data.LoginResponse
 import com.niraj.alertly.data.MyGroupResponse
 import com.niraj.alertly.data.creategroup.CreateGroupRequest
 import com.niraj.alertly.data.creategroup.CreateGroupResponse
+import com.niraj.alertly.data.joingroup.JoinGroupRequest
+import com.niraj.alertly.data.joingroup.JoinGroupResponse
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -24,6 +26,9 @@ interface AlertlyAPI {
 
     @POST("api/groups/create")
     suspend fun createGroup(@Header("Authorization") bearerToken :String, @Body createGroupRequest: CreateGroupRequest): Response<CreateGroupResponse>
+
+    @POST("api/groups/join")
+    suspend fun joinGroup(@Header("Authorization") bearerToken: String, @Body joinGroupRequest: JoinGroupRequest): Response<JoinGroupResponse>
 
     companion object {
         private var apiService: AlertlyAPI? = null

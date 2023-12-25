@@ -97,22 +97,53 @@ Response -
 
 ```json
 {
-    "success": true,
-    "data": [
-        {
-            "group_id": 7,
-            "pinned": false,
-            "group_name": "test-group",
-            "description": "yoyo",
-            "is_admin": true,
-            "created_at": "2023-12-17T06:39:02.108Z"
-        }
-    ]
+  "success": true,
+  "data": [
+    {
+      "group_id": 1,
+      "pinned": false,
+      "group_name": "Society Group",
+      "description": "An alert group for people in the Narmada Society",
+      "is_admin": true,
+      "created_at": "2023-12-22T04:19:56.978Z",
+      "group_image_uri": "https://randomuser.me/api/portraits/women/32.jpg"
+    },
+    {
+      "group_id": 2,
+      "pinned": false,
+      "group_name": "Bhopal Group",
+      "description": "An alert group for people in the Bhopal Region",
+      "is_admin": true,
+      "created_at": "2023-12-22T04:51:31.047Z",
+      "group_image_uri": "https://randomuser.me/api/portraits/men/46.jpg"
+    },
+    {
+      "group_id": 3,
+      "pinned": false,
+      "group_name": "MAT1002 Group",
+      "description": "An alert group for student's in class MAT1002",
+      "is_admin": true,
+      "created_at": "2023-12-22T04:52:17.158Z",
+      "group_image_uri": "https://randomuser.me/api/portraits/women/23.jpg"
+    },
+    {
+      "group_id": 4,
+      "pinned": false,
+      "group_name": "CSE1002",
+      "description": "An alert group for students in class CSE1002",
+      "is_admin": true,
+      "created_at": "2023-12-22T13:20:14.186Z",
+      "group_image_uri": "https://randomuser.me/api/portraits/men/19.jpg"
+    }
+  ]
 }
 ```
 
 
 ### Get /groups/{group_id}?pageNumber=1&pageSize=20
+
+
+page number is 1 based indexed
 
 
 Example - https://alertly.kshitizagrawal.in/api/groups/123?pageNumber=1&pageSize=20
@@ -121,16 +152,36 @@ Example - https://alertly.kshitizagrawal.in/api/groups/123?pageNumber=1&pageSize
 Response - 
 
 
-TODO: update with dummy data
-
-
 Success: 200
 
 
 ```json
 {
-    "success": true,
-    "data": []
+  "success": true,
+  "data": [
+    {
+      "alert_id": 2,
+      "group_id": 3,
+      "message_sender_id": "102904205778732515333",
+      "title": "alert 2",
+      "description": "some desc",
+      "severity": "danger",
+      "sent_at": "2023-12-24T18:47:37.693Z",
+      "sender_name": "Niraj",
+      "sender_image_uri": "https://randomuser.me/api/portraits/women/12.jpg"
+    },
+    {
+      "alert_id": 1,
+      "group_id": 3,
+      "message_sender_id": "102904205778732515333",
+      "title": "alert 1",
+      "description": "some desc",
+      "severity": "danger",
+      "sent_at": "2023-12-24T18:47:22.551Z",
+      "sender_name": "Niraj",
+      "sender_image_uri": "https://randomuser.me/api/portraits/women/27.jpg"
+    }
+  ]
 }
 ```
 
@@ -333,6 +384,60 @@ Server Error: 500
 {
     "success": false,
     "data": "error creating alert"
+}
+```
+
+
+**POST /uploads/media**
+
+
+For uploading any media and getting a static url for it. Restricted to only photos for now.
+
+
+Content-Type: **multipart/form-data**
+
+
+Request Form Data:
+
+
+```json
+key: "photos"
+value: <File> (restricted to only 1 for now)
+```
+
+
+Response: 
+
+
+Success: 200
+
+
+```json
+{
+    "success": true,
+    "data": {
+        "photos": [
+            {
+                "upload_id": 43,
+                "user_id": "102904205778732515333",
+                "metadata": "{\"userId\":\"102904205778732515333\",\"original_name\":\"CICD flow.png\"}",
+                "path": "CICD flow-1703464714974.png",
+                "created_at": "2023-12-25T00:38:34.980Z",
+                "uri": "https://alertly.kshitizagrawal.in/static/CICD%20flow-1703464714974.png"
+            }
+        ]
+    }
+}
+```
+
+
+Unauthorized: 401
+
+
+```json
+{
+    "success": false,
+    "data": "This is an authenticated resource, you must be logged in to access it."
 }
 ```
 

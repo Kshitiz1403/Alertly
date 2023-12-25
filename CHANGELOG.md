@@ -1,3 +1,12 @@
+# [0.26.0](https://github.com/Kshitiz1403/Alertly/compare/v0.25.0...v0.26.0) (2023-12-25)
+
+
+### Features
+
+* pgweb as GUI for postgres ([0669415](https://github.com/Kshitiz1403/Alertly/commit/0669415a2b862a7bed0e7c6f7bbce9fc244fd691))
+
+
+
 # [0.25.0](https://github.com/Kshitiz1403/Alertly/compare/v0.24.0...v0.25.0) (2023-12-25)
 
 
@@ -32,15 +41,6 @@
 ### Features
 
 * user image uri on group alerts ([078c42a](https://github.com/Kshitiz1403/Alertly/commit/078c42a04537d4d66ce02b2b7632fcb9ab7ec40c))
-
-
-
-# [0.21.0](https://github.com/Kshitiz1403/Alertly/compare/v0.20.0...v0.21.0) (2023-12-24)
-
-
-### Features
-
-* random group image ([75e1c9a](https://github.com/Kshitiz1403/Alertly/commit/75e1c9ab2bf7d4a51b42b4b098fa53324fbb323f))
 
 
 

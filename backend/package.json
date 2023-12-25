@@ -1,6 +1,6 @@
 {
   "name": "alertly-backend",
-  "version": "0.23.0",
+  "version": "0.24.0",
   "description": "Alertly Backend",
   "main": "src/app.ts",
   "scripts": {

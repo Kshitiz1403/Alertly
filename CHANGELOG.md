@@ -1,3 +1,12 @@
+# [0.24.0](https://github.com/Kshitiz1403/Alertly/compare/v0.23.0...v0.24.0) (2023-12-25)
+
+
+### Features
+
+* update group avatar ([b4b9ffc](https://github.com/Kshitiz1403/Alertly/commit/b4b9ffcfd03aab2b1c77b4e5246b43f167604235))
+
+
+
 # [0.23.0](https://github.com/Kshitiz1403/Alertly/compare/v0.22.0...v0.23.0) (2023-12-25)
 
 
@@ -32,15 +41,6 @@
 ### Features
 
 * random user images on get alerts ([6004147](https://github.com/Kshitiz1403/Alertly/commit/600414791b2b35134d613c77bb6ca2e38ce22d6a))
-
-
-
-## [0.19.2](https://github.com/Kshitiz1403/Alertly/compare/v0.19.1...v0.19.2) (2023-12-24)
-
-
-### Bug Fixes
-
-* build on production ([a9b6973](https://github.com/Kshitiz1403/Alertly/commit/a9b6973be8950cd3af543c46a18e5fb1af72e04c))
 
 
 

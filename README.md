@@ -2,6 +2,9 @@
 ### Writing swagger burnt me down. It requires dedicated time to have your project setup in a way to actually gain benefit of it. I hope this doesn’t bite me back 😔
 
 
+Deprecated: [https://alertly.kshitizagrawal.in/docs](https://alertly.kshitizagrawal.in/docs)
+
+
 ### Bearer Token
 
 
@@ -106,7 +109,7 @@ Response -
       "description": "An alert group for people in the Narmada Society",
       "is_admin": true,
       "created_at": "2023-12-22T04:19:56.978Z",
-      "group_image_uri": "https://randomuser.me/api/portraits/women/32.jpg"
+      "group_image_uri": "https://i.ibb.co/0cW8Bsv/group.png"
     },
     {
       "group_id": 2,
@@ -115,7 +118,7 @@ Response -
       "description": "An alert group for people in the Bhopal Region",
       "is_admin": true,
       "created_at": "2023-12-22T04:51:31.047Z",
-      "group_image_uri": "https://randomuser.me/api/portraits/men/46.jpg"
+      "group_image_uri": "https://i.ibb.co/0cW8Bsv/group.png"
     },
     {
       "group_id": 3,
@@ -124,7 +127,7 @@ Response -
       "description": "An alert group for student's in class MAT1002",
       "is_admin": true,
       "created_at": "2023-12-22T04:52:17.158Z",
-      "group_image_uri": "https://randomuser.me/api/portraits/women/23.jpg"
+      "group_image_uri": "https://i.ibb.co/0cW8Bsv/group.png"
     },
     {
       "group_id": 4,
@@ -133,9 +136,9 @@ Response -
       "description": "An alert group for students in class CSE1002",
       "is_admin": true,
       "created_at": "2023-12-22T13:20:14.186Z",
-      "group_image_uri": "https://randomuser.me/api/portraits/men/19.jpg"
-    }
-  ]
+      "group_image_uri": "https://i.ibb.co/0cW8Bsv/group.png"
+    }
+  ]
 }
 ```
 
@@ -168,7 +171,7 @@ Success: 200
       "severity": "danger",
       "sent_at": "2023-12-24T18:47:37.693Z",
       "sender_name": "Niraj",
-      "sender_image_uri": "https://randomuser.me/api/portraits/women/12.jpg"
+      "sender_image_uri": "https://lh3.googleusercontent.com/a/ACg8ocI41_5xc6YZ5oR6ikgv6l8XW7zgcqFDpaoZiOnS-JUAZm9G=s96-c"
     },
     {
       "alert_id": 1,
@@ -179,9 +182,9 @@ Success: 200
       "severity": "danger",
       "sent_at": "2023-12-24T18:47:22.551Z",
       "sender_name": "Niraj",
-      "sender_image_uri": "https://randomuser.me/api/portraits/women/27.jpg"
-    }
-  ]
+      "sender_image_uri": "https://lh3.googleusercontent.com/a/ACg8ocI41_5xc6YZ5oR6ikgv6l8XW7zgcqFDpaoZiOnS-JUAZm9G=s96-c"
+    }
+  ]
 }
 ```
 
@@ -391,7 +394,7 @@ Server Error: 500
 **POST /uploads/media**
 
 
-For uploading any media and getting a static url for it. Restricted to only photos for now.
+For uploading any media and getting a static URL for it. Restricted to only photos for now.
 
 
 Content-Type: **multipart/form-data**
@@ -402,7 +405,7 @@ Request Form Data:
 
 ```json
 key: "photos"
-value: <File> (restricted to only 1 for now)
+value: "<File> (restricted to only 1 for now)"
 ```
 
 
@@ -438,6 +441,49 @@ Unauthorized: 401
 {
     "success": false,
     "data": "This is an authenticated resource, you must be logged in to access it."
+}
+```
+
+
+**POST /groups/{group_id}/avatar**
+
+
+Request Body:
+
+
+```json
+{
+    "upload_id":30
+}
+```
+
+
+Response:
+
+
+Success 200:
+
+
+```json
+{
+    "success": true,
+    "data": {
+        "group_id": 7,
+        "group_name": "test-group",
+        "description": "yoyo",
+        "group_image_uri": "https://alertly.kshitizagrawal.in/static/CICD%20flow-1703463927699.png"
+    }
+}
+```
+
+
+Invalid Upload Id 400:
+
+
+```json
+{
+    "success": false,
+    "data": "the requested image is not found"
 }
 ```
 

@@ -4,7 +4,6 @@ import { Logger } from 'winston';
 import { Result } from '../util/result';
 import { GroupService } from '@/services/groupService';
 import { AlertService } from '@/services/alertService';
-import getRandomUserImage from '../util/randomUserImage';
 
 @Service()
 export class GroupController {

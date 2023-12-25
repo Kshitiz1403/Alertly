@@ -43,4 +43,7 @@ export default {
   api: {
     prefix: '/api',
   },
+
+  staticFilesPath: 'static/',
+  staticFilesPathTemporary: 'temp-static/',
 };

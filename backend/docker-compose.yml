@@ -8,6 +8,7 @@ services:
         condition: service_started
     command: bash -c "npm run migrate && npm run start"
     volumes:
+      - static-content:/static
       - //var/run/docker.sock:/var/run/docker.sock
     ports:
       - 6069:3000
@@ -34,11 +35,15 @@ services:
       - POSTGRES_DB=alertly
     networks:
       - alertly-network
+    # ports:
+    #   - 5432:5432
     # healthcheck:
     #   test: ["CMD", "curl", "-f", "http://localhost:5432"]
     #   timeout: 5s
 volumes:
   postgres-volume:
+    driver: local
+  static-content:
     driver: local
 
 networks:

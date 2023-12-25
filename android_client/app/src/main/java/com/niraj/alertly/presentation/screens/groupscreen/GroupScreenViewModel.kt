@@ -56,4 +56,20 @@ class GroupScreenViewModel : ViewModel() {
             }
         }
     }
+
+    fun createAlert(
+        title: String,
+        description: String,
+        severity: String
+    ) {
+        viewModelScope.launch {
+            val resp = apiRepository.createAlert(groupId, title, description, severity)
+            if(resp.success) {
+                Toast.makeText(MyApplication.appContext, "Alert Created Successfully", Toast.LENGTH_SHORT).show()
+                getGroupAlerts()
+            } else {
+                Toast.makeText(MyApplication.appContext, "Failed to create an alert", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 }

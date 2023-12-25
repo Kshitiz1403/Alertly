@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
@@ -19,34 +20,51 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.filled.Warning
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.AssistChip
+import androidx.compose.material3.AssistChipDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CardElevation
+import androidx.compose.material3.ChipColors
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.ElevatedAssistChip
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
+import androidx.compose.material3.FloatingActionButtonElevation
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
+import com.niraj.alertly.R
 import com.niraj.alertly.data.GroupData
 import com.niraj.alertly.data.groupalerts.Alert
 import com.niraj.alertly.data.groupalerts.AlertLoadingState
@@ -68,6 +86,36 @@ fun GroupScreen(
             if(groupList.isEmpty()) GroupData()
             else groupList[groupId]
         }
+    }
+    
+    var showCreateAlertDialog by remember {
+        mutableStateOf(false)
+    }
+    var alertTitle by remember {
+        mutableStateOf("")
+    }
+    var alertDescription by remember {
+        mutableStateOf("")
+    }
+    var alertSeverity by remember {
+        mutableStateOf("Normal")
+    }
+
+    val showAlertButton by remember {
+        derivedStateOf {
+            if(alertTitle.isNotEmpty() && alertDescription.isNotEmpty() && alertSeverity.isNotEmpty()) {
+                true
+            } else {
+                false
+            }
+        }
+    }
+    
+    fun dismissCreateAlertDialog() {
+        showCreateAlertDialog = false
+        alertTitle = ""
+        alertDescription = ""
+        alertSeverity = "Normal"
     }
 
     Surface (
@@ -126,10 +174,113 @@ fun GroupScreen(
                         }
                     }
                 )
+            },
+            floatingActionButton = {
+                ExtendedFloatingActionButton(
+                    onClick = {
+                        showCreateAlertDialog = true
+                    },
+                    contentColor = MaterialTheme.colorScheme.secondaryContainer,
+                    containerColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                    elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
+                ) {
+                    Icon(painterResource(R.drawable.circle_exclamation_solid), contentDescription = "Create Alert Icon")
+                    Spacer(modifier = Modifier.width(10.dp))
+                    Text("Alert")
+                }
             }
         ){ paddingValues ->
             GroupScreenContent(paddingValues, groupScreenViewModel, groupId)
         }
+    }
+
+    val chipSelectedColor = AssistChipDefaults.assistChipColors(
+        containerColor = MaterialTheme.colorScheme.primaryContainer,
+        labelColor = MaterialTheme.colorScheme.onPrimaryContainer
+    )
+    val chipNotSelectedColor = AssistChipDefaults.assistChipColors(
+        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+        labelColor = MaterialTheme.colorScheme.onSecondaryContainer
+    )
+    val severities: List<String> = listOf("Normal", "Elevated", "Danger")
+
+    if(showCreateAlertDialog) {
+        AlertDialog(
+            onDismissRequest = { 
+                dismissCreateAlertDialog()                               
+            }, 
+            confirmButton = {
+                Button(
+                    onClick = {
+                        groupScreenViewModel.createAlert(alertTitle, alertDescription, alertSeverity)
+                        dismissCreateAlertDialog()
+                    },
+                    enabled = showAlertButton
+                ) {
+                    Icon(painter = painterResource(id = R.drawable.circle_exclamation_solid), contentDescription = "Alert")
+                    Spacer(Modifier.width(10.dp))
+                    Text("Alert")
+                }
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = {
+                        dismissCreateAlertDialog()
+                    }
+                ) {
+                    Text("cancel")
+                }
+            },
+            icon = {
+                Icon(painter = painterResource(id = R.drawable.circle_exclamation_solid), contentDescription = "Alert Icon")
+            },
+            title = {
+                Text("Alert")
+            },
+            text = {
+                Column (
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    TextField(
+                        value = alertTitle, 
+                        onValueChange = {
+                            alertTitle = it
+                        },
+                        placeholder = {
+                            Text(text = "Alert title")
+                        }
+                    )
+                    TextField(
+                        value = alertDescription,
+                        onValueChange = {
+                            alertDescription = it
+                        },
+                        placeholder = {
+                            Text(text = "Alert description")
+                        }
+                    )
+                    Row (
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ){
+                        severities.forEach { level ->
+                            ElevatedAssistChip(
+                                onClick = {
+                                    alertSeverity = level
+                                },
+                                label = {
+                                        Text(text = level)
+                                },
+                                modifier = Modifier.wrapContentSize(),
+                                colors = if (alertSeverity == level) chipSelectedColor else chipNotSelectedColor
+                            )
+                        }
+                    }
+                }
+            }
+        )
     }
 }
 
@@ -189,6 +340,9 @@ fun GroupScreenContent(
                     items(alertList.size) {
                         AlertComponent(alert = alertList[it])
                         Spacer(Modifier.height(20.dp))
+                    }
+                    item {
+                        Spacer(Modifier.height(65.dp))
                     }
                 }
             }

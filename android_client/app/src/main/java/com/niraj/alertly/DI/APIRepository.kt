@@ -1,5 +1,6 @@
 package com.niraj.alertly.DI
 
+import android.content.ClipDescription
 import android.content.Context
 import android.util.Log
 import androidx.datastore.preferences.core.stringPreferencesKey
@@ -8,6 +9,9 @@ import com.niraj.alertly.data.login.Data
 import com.niraj.alertly.data.login.LoginRequest
 import com.niraj.alertly.data.login.LoginResponse
 import com.niraj.alertly.data.MyGroupResponse
+import com.niraj.alertly.data.createalert.CreateAlertRequest
+import com.niraj.alertly.data.createalert.CreateAlertResponse
+import com.niraj.alertly.data.creategroup.CreateGroupData
 import com.niraj.alertly.data.creategroup.CreateGroupRequest
 import com.niraj.alertly.data.creategroup.CreateGroupResponse
 import com.niraj.alertly.data.groupalerts.GetGroupAlertsResponse
@@ -70,7 +74,6 @@ class APIRepository @Inject constructor(
         pageSize: Int
     ): GetGroupAlertsResponse {
         val authToken = "Bearer ${getToken(MyApplication.appContext)}"
-        Log.d("NIRAJ22", "Calling Alerts")
 
         val resp = alertlyAPI.getGroupAlerts(authToken, groupId, pageNumber, pageSize)
         Log.d("NIRAJ22", resp.body().toString())
@@ -78,6 +81,23 @@ class APIRepository @Inject constructor(
             return resp.body()!!
         }
         return GetGroupAlertsResponse()
+    }
+
+
+    suspend fun createAlert(
+        groupId: Int,
+        title: String,
+        description: String,
+        severity: String
+    ) : CreateAlertResponse {
+        val authToken = "Bearer ${getToken(MyApplication.appContext)}"
+        val reqBody = CreateAlertRequest(title = title, description = description, severity = severity)
+
+        val resp = alertlyAPI.createAlert(authToken, groupId, reqBody)
+        if(resp.isSuccessful && resp.body() != null) {
+            return resp.body()!!
+        }
+        return CreateAlertResponse()
     }
 
     fun getToken(ctx: Context): String {

@@ -4,6 +4,8 @@ import com.niraj.alertly.BuildConfig
 import com.niraj.alertly.data.login.LoginRequest
 import com.niraj.alertly.data.login.LoginResponse
 import com.niraj.alertly.data.MyGroupResponse
+import com.niraj.alertly.data.createalert.CreateAlertRequest
+import com.niraj.alertly.data.createalert.CreateAlertResponse
 import com.niraj.alertly.data.creategroup.CreateGroupRequest
 import com.niraj.alertly.data.creategroup.CreateGroupResponse
 import com.niraj.alertly.data.groupalerts.GetGroupAlertsResponse
@@ -41,6 +43,12 @@ interface AlertlyAPI {
         @Query("pageSize") pageSize: Int
     ): Response<GetGroupAlertsResponse>
 
+    @POST("api/groups/{groupId}/alert")
+    suspend fun createAlert(
+        @Header("Authorization") bearerToken: String,
+        @Path("groupId") groupID: Int,
+        @Body createAlertRequest: CreateAlertRequest
+    ) : Response<CreateAlertResponse>
 
 
     companion object {

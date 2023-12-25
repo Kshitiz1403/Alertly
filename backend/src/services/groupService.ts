@@ -96,7 +96,7 @@ export class GroupService {
         ...updatedGroup,
         group_image_uri: updatedGroup.group_image_path
           ? encodeURI(`https://alertly.kshitizagrawal.in/static/${updatedGroup.group_image_path}`)
-          : 'https://i.ibb.co/0cW8Bsv/group.png',
+          : 'https://alertly.kshitizagrawal.in/static/group-1703505593728.png',
         group_image_path: undefined,
       };
       return groupWthImageURI;

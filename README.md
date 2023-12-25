@@ -109,7 +109,7 @@ Response -
       "description": "An alert group for people in the Narmada Society",
       "is_admin": true,
       "created_at": "2023-12-22T04:19:56.978Z",
-      "group_image_uri": "https://i.ibb.co/0cW8Bsv/group.png"
+      "group_image_uri": "https://alertly.kshitizagrawal.in/static/group-1703505593728.png"
     },
     {
       "group_id": 2,
@@ -118,7 +118,7 @@ Response -
       "description": "An alert group for people in the Bhopal Region",
       "is_admin": true,
       "created_at": "2023-12-22T04:51:31.047Z",
-      "group_image_uri": "https://i.ibb.co/0cW8Bsv/group.png"
+      "group_image_uri": "https://alertly.kshitizagrawal.in/static/group-1703505593728.png"
     },
     {
       "group_id": 3,
@@ -127,7 +127,7 @@ Response -
       "description": "An alert group for student's in class MAT1002",
       "is_admin": true,
       "created_at": "2023-12-22T04:52:17.158Z",
-      "group_image_uri": "https://i.ibb.co/0cW8Bsv/group.png"
+      "group_image_uri": "https://alertly.kshitizagrawal.in/static/group-1703505593728.png"
     },
     {
       "group_id": 4,
@@ -136,7 +136,7 @@ Response -
       "description": "An alert group for students in class CSE1002",
       "is_admin": true,
       "created_at": "2023-12-22T13:20:14.186Z",
-      "group_image_uri": "https://i.ibb.co/0cW8Bsv/group.png"
+      "group_image_uri": "https://alertly.kshitizagrawal.in/static/group-1703505593728.png"
     }
   ]
 }
@@ -421,12 +421,12 @@ Success: 200
     "data": {
         "photos": [
             {
-                "upload_id": 43,
+                "upload_id": 1,
                 "user_id": "102904205778732515333",
-                "metadata": "{\"userId\":\"102904205778732515333\",\"original_name\":\"CICD flow.png\"}",
-                "path": "CICD flow-1703464714974.png",
-                "created_at": "2023-12-25T00:38:34.980Z",
-                "uri": "https://alertly.kshitizagrawal.in/static/CICD%20flow-1703464714974.png"
+                "metadata": "{\"userId\":\"102904205778732515333\",\"original_name\":\"group.png\"}",
+                "path": "group-1703505593728.png",
+                "created_at": "2023-12-25T11:59:53.729Z",
+                "uri": "https://alertly.kshitizagrawal.in/static/group-1703505593728.png"
             }
         ]
     }

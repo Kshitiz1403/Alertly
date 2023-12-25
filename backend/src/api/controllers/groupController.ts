@@ -122,4 +122,17 @@ export class GroupController {
       return next(error);
     }
   };
+
+  public updateGroupAvatar = async (req: IGroupRequest, res: IResponse, next: INextFunction) => {
+    this.logger.debug('Calling Update Group Avatar endpoint with body %o', req.body);
+
+    try {
+      const { upload_id } = req.body;
+      if (isNaN(+upload_id)) throw 'invalid upload id';
+      const group = await this.groupService.updateGroupAvatar(req.group_id, +upload_id);
+      return res.status(200).json(Result.success(group));
+    } catch (error) {
+      return next(error);
+    }
+  };
 }

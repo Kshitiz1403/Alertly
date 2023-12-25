@@ -403,9 +403,9 @@ Content-Type: **multipart/form-data**
 Request Form Data:
 
 
-```json
+```text
 key: "photos"
-value: "<File> (restricted to only 1 for now)"
+value: <File> (restricted to only 1 for now
 ```
 
 

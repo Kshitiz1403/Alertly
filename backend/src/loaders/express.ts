@@ -33,6 +33,8 @@ export default ({ app }: { app: express.Application }) => {
   // Maybe not needed anymore ?
   app.use(require('method-override')());
 
+  app.use('/static', express.static(config.staticFilesPath));
+
   // Transforms the raw string of req.body into json
   app.use(express.json());
 
@@ -41,8 +43,6 @@ export default ({ app }: { app: express.Application }) => {
 
   // Load API routes
   app.use(config.api.prefix, routes());
-
-  app.use('/static', express.static(config.staticFilesPath));
 
   /// catch 404 and forward to error handler
   app.use((req, res, next) => {

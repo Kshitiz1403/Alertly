@@ -391,7 +391,7 @@ Server Error: 500
 ```
 
 
-**POST /uploads/media**
+### **POST /uploads/media**
 
 
 For uploading any media and getting a static URL for it. Restricted to only photos for now.
@@ -445,7 +445,7 @@ Unauthorized: 401
 ```
 
 
-**POST /groups/{group_id}/avatar**
+### **POST /groups/{group_id}/avatar**
 
 
 Request Body:

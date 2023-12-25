@@ -1,0 +1,1 @@
+ALTER TABLE DROP COLUMN image_uri_id;

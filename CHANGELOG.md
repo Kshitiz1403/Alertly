@@ -1,3 +1,13 @@
+# [0.23.0](https://github.com/Kshitiz1403/Alertly/compare/v0.22.0...v0.23.0) (2023-12-25)
+
+
+### Features
+
+* containerize static content from upload service ([074b992](https://github.com/Kshitiz1403/Alertly/commit/074b992f49b89140b511645a2699cbb7fb0a6e4d))
+* upload image logic ([92029fb](https://github.com/Kshitiz1403/Alertly/commit/92029fb0843146e21faabc68c75b15e7e8c9a0d4))
+
+
+
 # [0.22.0](https://github.com/Kshitiz1403/Alertly/compare/v0.21.0...v0.22.0) (2023-12-24)
 
 
@@ -31,15 +41,6 @@
 ### Bug Fixes
 
 * build on production ([a9b6973](https://github.com/Kshitiz1403/Alertly/commit/a9b6973be8950cd3af543c46a18e5fb1af72e04c))
-
-
-
-## [0.19.1](https://github.com/Kshitiz1403/Alertly/compare/v0.19.0...v0.19.1) (2023-12-24)
-
-
-### Bug Fixes
-
-* auto restart on server crash ([e244baa](https://github.com/Kshitiz1403/Alertly/commit/e244baa023b45e24114c83adebf02df857799a52))
 
 
 

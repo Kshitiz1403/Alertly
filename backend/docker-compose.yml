@@ -40,6 +40,20 @@ services:
     # healthcheck:
     #   test: ["CMD", "curl", "-f", "http://localhost:5432"]
     #   timeout: 5s
+  pgweb:
+    container_name: pgweb
+    restart: always
+    image: sosedoff/pgweb
+    ports:
+      - '6070:8081'
+    links:
+      - postgres:postgres
+    environment:
+      - DATABASE_URL=postgres://postgres:root@postgres:5432/alertly?sslmode=disable
+    networks:
+      - alertly-network
+    depends_on:
+      - postgres
 volumes:
   postgres-volume:
     driver: local

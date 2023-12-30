@@ -41,7 +41,6 @@ services:
     #   test: ["CMD", "curl", "-f", "http://localhost:5432"]
     #   timeout: 5s
   pgweb:
-    container_name: pgweb
     restart: always
     image: sosedoff/pgweb
     ports:

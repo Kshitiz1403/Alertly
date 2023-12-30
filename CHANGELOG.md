@@ -1,3 +1,12 @@
+# [0.27.0](https://github.com/Kshitiz1403/Alertly/compare/v0.26.0...v0.27.0) (2023-12-30)
+
+
+### Features
+
+* pgweb independent of stack ([db65039](https://github.com/Kshitiz1403/Alertly/commit/db65039a4cb83617d19be5c9f0210e159d793bcd))
+
+
+
 # [0.26.0](https://github.com/Kshitiz1403/Alertly/compare/v0.25.0...v0.26.0) (2023-12-25)
 
 
@@ -32,15 +41,6 @@
 
 * containerize static content from upload service ([074b992](https://github.com/Kshitiz1403/Alertly/commit/074b992f49b89140b511645a2699cbb7fb0a6e4d))
 * upload image logic ([92029fb](https://github.com/Kshitiz1403/Alertly/commit/92029fb0843146e21faabc68c75b15e7e8c9a0d4))
-
-
-
-# [0.22.0](https://github.com/Kshitiz1403/Alertly/compare/v0.21.0...v0.22.0) (2023-12-24)
-
-
-### Features
-
-* user image uri on group alerts ([078c42a](https://github.com/Kshitiz1403/Alertly/commit/078c42a04537d4d66ce02b2b7632fcb9ab7ec40c))
 
 
 

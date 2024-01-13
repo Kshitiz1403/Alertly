@@ -10,6 +10,8 @@ services:
     volumes:
       - static-content:/static
       - //var/run/docker.sock:/var/run/docker.sock
+      - /combined.log:/combined.log
+      - /error.log:/error.log
     ports:
       - 6069:3000
     networks:
@@ -23,6 +25,7 @@ services:
       - JWT_SECRET=AlertlySecret
       - JWT_ALGO=HS256
       - GOOGLE_AUTH_CLIENT_ID=${GOOGLE_AUTH_CLIENT_ID}
+      - NODE_ENV=${NODE_ENV}
   postgres:
     image: postgres
     restart: unless-stopped

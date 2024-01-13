@@ -1,3 +1,18 @@
+# [0.28.0](https://github.com/Kshitiz1403/Alertly/compare/v0.27.0...v0.28.0) (2024-01-13)
+
+
+### Bug Fixes
+
+* bind mount handling ([01df19f](https://github.com/Kshitiz1403/Alertly/commit/01df19ffd66260265ce75e9240a05fa9be57b913))
+* logging compose file fixes ([3c0693d](https://github.com/Kshitiz1403/Alertly/commit/3c0693df4470a8460c3ffe8a101a988d015c6b12))
+
+
+### Features
+
+* save logs via bind mounts ([6090388](https://github.com/Kshitiz1403/Alertly/commit/6090388fc71bca6459929a047233dda9331f6aeb))
+
+
+
 # [0.27.0](https://github.com/Kshitiz1403/Alertly/compare/v0.26.0...v0.27.0) (2023-12-30)
 
 
@@ -31,16 +46,6 @@
 ### Features
 
 * update group avatar ([b4b9ffc](https://github.com/Kshitiz1403/Alertly/commit/b4b9ffcfd03aab2b1c77b4e5246b43f167604235))
-
-
-
-# [0.23.0](https://github.com/Kshitiz1403/Alertly/compare/v0.22.0...v0.23.0) (2023-12-25)
-
-
-### Features
-
-* containerize static content from upload service ([074b992](https://github.com/Kshitiz1403/Alertly/commit/074b992f49b89140b511645a2699cbb7fb0a6e4d))
-* upload image logic ([92029fb](https://github.com/Kshitiz1403/Alertly/commit/92029fb0843146e21faabc68c75b15e7e8c9a0d4))
 
 
 

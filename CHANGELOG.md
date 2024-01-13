@@ -1,3 +1,12 @@
+## [0.28.1](https://github.com/Kshitiz1403/Alertly/compare/v0.28.0...v0.28.1) (2024-01-13)
+
+
+### Bug Fixes
+
+* logging compose file fixes ([91205a0](https://github.com/Kshitiz1403/Alertly/commit/91205a099884123a98663a6669ef7b4265a63d8b))
+
+
+
 # [0.28.0](https://github.com/Kshitiz1403/Alertly/compare/v0.27.0...v0.28.0) (2024-01-13)
 
 
@@ -37,15 +46,6 @@
 ### Features
 
 * default group image is self hosted ([ba575c3](https://github.com/Kshitiz1403/Alertly/commit/ba575c3f1193c17317c20fb173c319110474f98e))
-
-
-
-# [0.24.0](https://github.com/Kshitiz1403/Alertly/compare/v0.23.0...v0.24.0) (2023-12-25)
-
-
-### Features
-
-* update group avatar ([b4b9ffc](https://github.com/Kshitiz1403/Alertly/commit/b4b9ffcfd03aab2b1c77b4e5246b43f167604235))
 
 
 

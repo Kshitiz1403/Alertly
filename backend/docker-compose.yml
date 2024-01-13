@@ -12,7 +12,6 @@ services:
       - //var/run/docker.sock:/var/run/docker.sock
       - /combined.log:/combined.log
       - /error.log:/error.log
-
     ports:
       - 6069:3000
     networks:

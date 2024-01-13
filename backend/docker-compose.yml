@@ -26,6 +26,7 @@ services:
       - JWT_ALGO=HS256
       - GOOGLE_AUTH_CLIENT_ID=${GOOGLE_AUTH_CLIENT_ID}
       - NODE_ENV=${NODE_ENV}
+      - PWD=${PWD}
   postgres:
     image: postgres
     restart: unless-stopped

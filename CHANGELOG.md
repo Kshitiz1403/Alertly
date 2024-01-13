@@ -1,3 +1,12 @@
+## [0.28.2](https://github.com/Kshitiz1403/Alertly/compare/v0.28.1...v0.28.2) (2024-01-13)
+
+
+### Bug Fixes
+
+* logging compose file fixes ([5c36478](https://github.com/Kshitiz1403/Alertly/commit/5c36478c4ac8c877954fc1ad4443cf74510d00fc))
+
+
+
 ## [0.28.1](https://github.com/Kshitiz1403/Alertly/compare/v0.28.0...v0.28.1) (2024-01-13)
 
 
@@ -37,15 +46,6 @@
 ### Features
 
 * pgweb as GUI for postgres ([0669415](https://github.com/Kshitiz1403/Alertly/commit/0669415a2b862a7bed0e7c6f7bbce9fc244fd691))
-
-
-
-# [0.25.0](https://github.com/Kshitiz1403/Alertly/compare/v0.24.0...v0.25.0) (2023-12-25)
-
-
-### Features
-
-* default group image is self hosted ([ba575c3](https://github.com/Kshitiz1403/Alertly/commit/ba575c3f1193c17317c20fb173c319110474f98e))
 
 
 

@@ -81,7 +81,8 @@ import java.util.Locale
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GroupScreen(
-    groupId: Int = 1
+    groupId: Int = 1,
+    navigateToHome: () -> Unit
 ) {
 
     val groupScreenViewModel: GroupScreenViewModel = viewModel()
@@ -138,7 +139,7 @@ fun GroupScreen(
                     navigationIcon = {
                         IconButton(
                             onClick = {
-                                /*TODO Go back to home */
+                                navigateToHome()
                             }
                         ) {
                             Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Go Back")

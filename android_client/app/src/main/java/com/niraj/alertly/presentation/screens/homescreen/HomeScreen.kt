@@ -1,5 +1,6 @@
 package com.niraj.alertly.presentation.screens.homescreen
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -54,7 +55,8 @@ import com.niraj.alertly.data.GroupData
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    navigateToLogin: () -> Unit
+    navigateToLogin: () -> Unit,
+    navigateToGroup: (Int) -> Unit
 ) {
 
     val homeViewModel: HomeViewModel = viewModel()
@@ -131,7 +133,10 @@ fun HomeScreen(
                     Text("Groups", style = MaterialTheme.typography.displaySmall, modifier = Modifier.padding(horizontal = 10.dp))
                 }
                 items(groupList.size) {
-                    GroupItem(groupData = groupList[it])
+                    GroupItem(
+                        groupData = groupList[it],
+                        navigateToGroup = navigateToGroup
+                    )
                 }
             }
         }
@@ -246,12 +251,16 @@ fun HomeScreen(
 
 @Composable
 fun GroupItem(
-    groupData: GroupData
+    groupData: GroupData,
+    navigateToGroup: (Int) -> Unit
 ) {
     Card (
         Modifier
             .fillMaxWidth()
-            .padding(horizontal = 10.dp),
+            .padding(horizontal = 10.dp)
+            .clickable {
+                navigateToGroup(groupData.group_id)
+            },
         shape = RoundedCornerShape(CornerSize(16.dp)),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant

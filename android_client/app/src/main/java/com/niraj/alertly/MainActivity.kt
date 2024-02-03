@@ -29,8 +29,8 @@ class MainActivity : ComponentActivity() {
                 val ctx = LocalContext.current
                 val navController = rememberNavController()
 //                deleteToken(ctx)
-//                SetupNavGraph(startDestination = getStartDestination(ctx), navController = navController)
-                GroupScreen()
+                SetupNavGraph(startDestination = getStartDestination(ctx), navController = navController)
+//                GroupScreen()
             }
         }
     }

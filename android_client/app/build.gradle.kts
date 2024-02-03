@@ -85,10 +85,11 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
     // Compose Navigation
-    implementation("androidx.navigation:navigation-compose:2.5.3")
+    implementation("androidx.navigation:navigation-compose:2.7.6")
 
     // Google Sign in
-    implementation("com.github.stevdza-san:OneTapCompose:1.0.0")
+    implementation("com.github.stevdza-san:OneTapCompose:1.0.11")
+
 
     //RETROFIT
     implementation("com.squareup.retrofit2:retrofit:2.9.0")

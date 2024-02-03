@@ -13,6 +13,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.navigation.compose.rememberNavController
 import com.niraj.alertly.navigation.SetupNavGraph
+import com.niraj.alertly.presentation.screens.groupscreen.GroupScreen
 import com.niraj.alertly.ui.theme.AlertlyTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first
@@ -28,7 +29,8 @@ class MainActivity : ComponentActivity() {
                 val ctx = LocalContext.current
                 val navController = rememberNavController()
 //                deleteToken(ctx)
-                SetupNavGraph(startDestination = getStartDestination(ctx), navController = navController)
+//                SetupNavGraph(startDestination = getStartDestination(ctx), navController = navController)
+                GroupScreen()
             }
         }
     }

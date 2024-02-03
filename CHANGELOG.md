@@ -1,4 +1,9 @@
-# [0.30.0](https://github.com/Kshitiz1403/Alertly/compare/v0.29.0...v0.30.0) (2024-02-03)
+## [0.30.1](https://github.com/Kshitiz1403/Alertly/compare/v0.30.0...v0.30.1) (2024-02-03)
+
+
+### Bug Fixes
+
+* color correction for alert creation button ([559f9c8](https://github.com/Kshitiz1403/Alertly/commit/559f9c8d881050cca43fff894553394c1ddab0bc))
 
 
 ### Features

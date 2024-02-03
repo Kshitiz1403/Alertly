@@ -8,6 +8,7 @@ import com.niraj.alertly.data.createalert.CreateAlertRequest
 import com.niraj.alertly.data.createalert.CreateAlertResponse
 import com.niraj.alertly.data.creategroup.CreateGroupRequest
 import com.niraj.alertly.data.creategroup.CreateGroupResponse
+import com.niraj.alertly.data.getaccesstoken.GetAccessTokenResponse
 import com.niraj.alertly.data.groupalerts.GetGroupAlertsResponse
 import com.niraj.alertly.data.joingroup.JoinGroupRequest
 import com.niraj.alertly.data.joingroup.JoinGroupResponse
@@ -50,6 +51,11 @@ interface AlertlyAPI {
         @Body createAlertRequest: CreateAlertRequest
     ) : Response<CreateAlertResponse>
 
+    @GET("api/groups/{groupId}/access_token")
+    suspend fun getAccessToken(
+        @Header("Authorization") bearerToken: String,
+        @Path("groupId") groupId: Int
+    ): Response<GetAccessTokenResponse>
 
     companion object {
         private var apiService: AlertlyAPI? = null

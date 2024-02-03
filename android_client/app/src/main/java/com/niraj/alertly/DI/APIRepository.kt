@@ -14,6 +14,7 @@ import com.niraj.alertly.data.createalert.CreateAlertResponse
 import com.niraj.alertly.data.creategroup.CreateGroupData
 import com.niraj.alertly.data.creategroup.CreateGroupRequest
 import com.niraj.alertly.data.creategroup.CreateGroupResponse
+import com.niraj.alertly.data.getaccesstoken.GetAccessTokenResponse
 import com.niraj.alertly.data.groupalerts.GetGroupAlertsResponse
 import com.niraj.alertly.data.joingroup.JoinGroupRequest
 import com.niraj.alertly.data.joingroup.JoinGroupResponse
@@ -98,6 +99,18 @@ class APIRepository @Inject constructor(
             return resp.body()!!
         }
         return CreateAlertResponse()
+    }
+
+    suspend fun getAccessToken(
+        groupId: Int
+    ) : GetAccessTokenResponse {
+        val authToken = "Bearer ${getToken(MyApplication.appContext)}"
+        val resp = alertlyAPI.getAccessToken(authToken, groupId)
+
+        if(resp.isSuccessful && resp.body() != null) {
+            return resp.body()!!
+        }
+        return GetAccessTokenResponse()
     }
 
     fun getToken(ctx: Context): String {

@@ -1,5 +1,6 @@
 package com.niraj.alertly.presentation.screens.groupscreen
 
+import android.content.Intent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -19,12 +20,15 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.AssistChip
 import androidx.compose.material3.AssistChipDefaults
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CardElevation
@@ -52,11 +56,14 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.style.TextAlign
@@ -68,6 +75,7 @@ import com.niraj.alertly.R
 import com.niraj.alertly.data.GroupData
 import com.niraj.alertly.data.groupalerts.Alert
 import com.niraj.alertly.data.groupalerts.AlertLoadingState
+import kotlinx.coroutines.launch
 import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -118,6 +126,9 @@ fun GroupScreen(
         alertSeverity = "Normal"
     }
 
+    var showAccessCodeDialog by remember {
+        mutableStateOf(false)
+    }
     Surface (
         modifier = Modifier.fillMaxSize()
     ) {
@@ -156,7 +167,7 @@ fun GroupScreen(
                         // Access Code Button
                         IconButton(
                             onClick = {
-                                /*TODO*/
+                                showAccessCodeDialog = true
                             }
                         ) {
                             Icon(imageVector = Icons.Default.Share, contentDescription = "Access code button")
@@ -203,6 +214,11 @@ fun GroupScreen(
         labelColor = MaterialTheme.colorScheme.onSecondaryContainer
     )
     val severities: List<String> = listOf("Normal", "Elevated", "Danger")
+    val colorMap: Map<String, Color> = mapOf(
+        Pair("Normal", Color(0xFFCBFFA9)),
+        Pair("Elevated", Color(0xFFFFFEC4)),
+        Pair("Danger", Color(0xFFFF9B9B)),
+    )
 
     if(showCreateAlertDialog) {
         AlertDialog(
@@ -215,7 +231,10 @@ fun GroupScreen(
                         groupScreenViewModel.createAlert(alertTitle, alertDescription, alertSeverity)
                         dismissCreateAlertDialog()
                     },
-                    enabled = showAlertButton
+                    enabled = showAlertButton,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = colorMap[alertSeverity]!!
+                    )
                 ) {
                     Icon(painter = painterResource(id = R.drawable.circle_exclamation_solid), contentDescription = "Alert")
                     Spacer(Modifier.width(10.dp))
@@ -282,6 +301,63 @@ fun GroupScreen(
             }
         )
     }
+
+    val accessToken by groupScreenViewModel.accessToken.collectAsState()
+    val ctx = LocalContext.current
+
+    fun dismissAccessCodeDialog() {
+        showAccessCodeDialog = false
+    }
+    if(showAccessCodeDialog) {
+        AlertDialog(
+            onDismissRequest = { dismissAccessCodeDialog() },
+            confirmButton = {
+                Button(onClick = { dismissAccessCodeDialog() }) {
+                    Text("Exit")
+                }
+            },
+            title = {Text(text = "Access Token")},
+            text = {
+                Column (
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    if(accessToken.isEmpty()) {
+                        CircularProgressIndicator()
+                    } else {
+                        Text(accessToken, style = MaterialTheme.typography.displayLarge)
+                        Spacer(Modifier.height(20.dp))
+                        Row (
+                            horizontalArrangement = Arrangement.spacedBy(20.dp)
+                        ){
+                            TextButton(onClick = {
+                                groupScreenViewModel.getAccessToken()
+                            }) {
+                                Icon(imageVector = Icons.Default.Refresh, contentDescription = null)
+                                Spacer(modifier = Modifier.width(5.dp))
+                                Text("Refresh")
+                            }
+                            TextButton(onClick = {
+                                val sendIntent: Intent = Intent().apply{
+                                    action = Intent.ACTION_SEND
+                                    putExtra(Intent.EXTRA_TEXT, "Join the alert group: ${group.group_name} using the access code: \n$accessToken")
+                                    type = "text/plain"
+                                }
+                                val shareIntent = Intent.createChooser(sendIntent, null)
+                                ctx.startActivity(shareIntent)
+                            }) {
+                                Icon(imageVector = Icons.Default.Share, contentDescription = null)
+                                Spacer(modifier = Modifier.width(5.dp))
+                                Text("Share")
+                            }
+                        }
+                    }
+                }
+            }
+        )
+    }
+
 }
 
 @Composable

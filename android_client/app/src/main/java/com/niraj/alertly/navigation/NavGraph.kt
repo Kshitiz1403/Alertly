@@ -17,15 +17,22 @@ fun SetupNavGraph(startDestination: String, navController: NavHostController) {
                 navController.navigate(Screen.Home.route)
             }
         )
-        homeScreenRoute()
+        homeScreenRoute(
+            navigateToLogin = {
+                navController.popBackStack()
+                navController.navigate(Screen.Login.route)
+            }
+        )
     }
 }
 
 fun NavGraphBuilder.homeScreenRoute(
-
+    navigateToLogin: () -> Unit
 ) {
     composable(route = Screen.Home.route) {
-        HomeScreen()
+        HomeScreen(
+            navigateToLogin = navigateToLogin
+        )
     }
 }
 
@@ -33,7 +40,9 @@ fun NavGraphBuilder.loginRoute(
     navigateToHome: () -> Unit
 ) {
     composable(route = Screen.Login.route) {
-        LoginScreen(navigateToHome = navigateToHome)
+        LoginScreen(
+            navigateToHome = navigateToHome
+        )
     }
 }
 

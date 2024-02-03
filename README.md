@@ -2,6 +2,9 @@
 ### Writing swagger burnt me down. It requires dedicated time to have your project setup in a way to actually gain benefit of it. I hope this doesn’t bite me back 😔
 
 
+Deprecated: [https://alertly.kshitizagrawal.in/docs](https://alertly.kshitizagrawal.in/docs)
+
+
 ### Bearer Token
 
 
@@ -97,22 +100,53 @@ Response -
 
 ```json
 {
-    "success": true,
-    "data": [
-        {
-            "group_id": 7,
-            "pinned": false,
-            "group_name": "test-group",
-            "description": "yoyo",
-            "is_admin": true,
-            "created_at": "2023-12-17T06:39:02.108Z"
-        }
-    ]
+  "success": true,
+  "data": [
+    {
+      "group_id": 1,
+      "pinned": false,
+      "group_name": "Society Group",
+      "description": "An alert group for people in the Narmada Society",
+      "is_admin": true,
+      "created_at": "2023-12-22T04:19:56.978Z",
+      "group_image_uri": "https://alertly.kshitizagrawal.in/static/group-1703505593728.png"
+    },
+    {
+      "group_id": 2,
+      "pinned": false,
+      "group_name": "Bhopal Group",
+      "description": "An alert group for people in the Bhopal Region",
+      "is_admin": true,
+      "created_at": "2023-12-22T04:51:31.047Z",
+      "group_image_uri": "https://alertly.kshitizagrawal.in/static/group-1703505593728.png"
+    },
+    {
+      "group_id": 3,
+      "pinned": false,
+      "group_name": "MAT1002 Group",
+      "description": "An alert group for student's in class MAT1002",
+      "is_admin": true,
+      "created_at": "2023-12-22T04:52:17.158Z",
+      "group_image_uri": "https://alertly.kshitizagrawal.in/static/group-1703505593728.png"
+    },
+    {
+      "group_id": 4,
+      "pinned": false,
+      "group_name": "CSE1002",
+      "description": "An alert group for students in class CSE1002",
+      "is_admin": true,
+      "created_at": "2023-12-22T13:20:14.186Z",
+      "group_image_uri": "https://alertly.kshitizagrawal.in/static/group-1703505593728.png"
+    }
+  ]
 }
 ```
 
 
 ### Get /groups/{group_id}?pageNumber=1&pageSize=20
+
+
+page number is 1 based indexed
 
 
 Example - https://alertly.kshitizagrawal.in/api/groups/123?pageNumber=1&pageSize=20
@@ -121,16 +155,36 @@ Example - https://alertly.kshitizagrawal.in/api/groups/123?pageNumber=1&pageSize
 Response - 
 
 
-TODO: update with dummy data
-
-
 Success: 200
 
 
 ```json
 {
-    "success": true,
-    "data": []
+  "success": true,
+  "data": [
+    {
+      "alert_id": 2,
+      "group_id": 3,
+      "message_sender_id": "102904205778732515333",
+      "title": "alert 2",
+      "description": "some desc",
+      "severity": "danger",
+      "sent_at": "2023-12-24T18:47:37.693Z",
+      "sender_name": "Niraj",
+      "sender_image_uri": "https://lh3.googleusercontent.com/a/ACg8ocI41_5xc6YZ5oR6ikgv6l8XW7zgcqFDpaoZiOnS-JUAZm9G=s96-c"
+    },
+    {
+      "alert_id": 1,
+      "group_id": 3,
+      "message_sender_id": "102904205778732515333",
+      "title": "alert 1",
+      "description": "some desc",
+      "severity": "danger",
+      "sent_at": "2023-12-24T18:47:22.551Z",
+      "sender_name": "Niraj",
+      "sender_image_uri": "https://lh3.googleusercontent.com/a/ACg8ocI41_5xc6YZ5oR6ikgv6l8XW7zgcqFDpaoZiOnS-JUAZm9G=s96-c"
+    }
+  ]
 }
 ```
 
@@ -333,6 +387,103 @@ Server Error: 500
 {
     "success": false,
     "data": "error creating alert"
+}
+```
+
+
+### **POST /uploads/media**
+
+
+For uploading any media and getting a static URL for it. Restricted to only photos for now.
+
+
+Content-Type: **multipart/form-data**
+
+
+Request Form Data:
+
+
+```text
+key: "photos"
+value: <File> (restricted to only 1 for now
+```
+
+
+Response: 
+
+
+Success: 200
+
+
+```json
+{
+    "success": true,
+    "data": {
+        "photos": [
+            {
+                "upload_id": 1,
+                "user_id": "102904205778732515333",
+                "metadata": "{\"userId\":\"102904205778732515333\",\"original_name\":\"group.png\"}",
+                "path": "group-1703505593728.png",
+                "created_at": "2023-12-25T11:59:53.729Z",
+                "uri": "https://alertly.kshitizagrawal.in/static/group-1703505593728.png"
+            }
+        ]
+    }
+}
+```
+
+
+Unauthorized: 401
+
+
+```json
+{
+    "success": false,
+    "data": "This is an authenticated resource, you must be logged in to access it."
+}
+```
+
+
+### **POST /groups/{group_id}/avatar**
+
+
+Request Body:
+
+
+```json
+{
+    "upload_id":30
+}
+```
+
+
+Response:
+
+
+Success 200:
+
+
+```json
+{
+    "success": true,
+    "data": {
+        "group_id": 7,
+        "group_name": "test-group",
+        "description": "yoyo",
+        "group_image_uri": "https://alertly.kshitizagrawal.in/static/CICD%20flow-1703463927699.png"
+    }
+}
+```
+
+
+Invalid Upload Id 400:
+
+
+```json
+{
+    "success": false,
+    "data": "the requested image is not found"
 }
 ```
 

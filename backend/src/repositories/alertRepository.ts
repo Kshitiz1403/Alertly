@@ -11,7 +11,7 @@ export class AlertRepository {
   public getGroupAlerts = async (group_id: number, pageNumber: number, pageSize: number) => {
     const offset = (pageNumber - 1) * pageSize;
     const query = `SELECT alerts.alert_id, alerts.group_id, alerts.user_id AS message_sender_id,
-        alerts.title, alerts.description, alerts.severity, alerts.sent_at, users.given_name AS sender_name
+        alerts.title, alerts.description, alerts.severity, alerts.sent_at, users.given_name AS sender_name, users.picture as sender_image_uri
       FROM alerts
       INNER JOIN users ON alerts.user_id = users.id
       WHERE alerts.group_id = $1
@@ -31,6 +31,7 @@ export class AlertRepository {
       description: string;
       severity: string;
       sent_at: Date;
+      sender_image_uri: string;
     }[] = result.rows;
     return groupMessages;
   };

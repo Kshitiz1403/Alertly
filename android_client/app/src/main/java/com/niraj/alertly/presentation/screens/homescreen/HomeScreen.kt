@@ -53,7 +53,9 @@ import com.niraj.alertly.data.GroupData
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    navigateToLogin: () -> Unit
+) {
 
     val homeViewModel: HomeViewModel = viewModel()
     val groupList by homeViewModel.groupList.collectAsState()

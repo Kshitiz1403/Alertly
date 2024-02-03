@@ -14,8 +14,14 @@ export class GroupService {
 
   public getAllGroupsForUser = async (userID: string) => {
     const groups = await this.groupRepository.getGroupsForUser(userID);
-
-    return groups;
+    const groupsWithImageURI = groups.map(group => ({
+      ...group,
+      group_image_uri: group.group_image_path
+        ? encodeURI(`https://alertly.kshitizagrawal.in/static/${group.group_image_path}`)
+        : 'https://i.ibb.co/0cW8Bsv/group.png',
+      group_image_path: undefined,
+    }));
+    return groupsWithImageURI;
   };
 
   public createGroupByUser = async (
@@ -80,6 +86,22 @@ export class GroupService {
       return { group_id: group.group_id };
     } catch (error) {
       throw { status: 401, message: "the token doesn't exist or is expired" };
+    }
+  };
+
+  public updateGroupAvatar = async (group_id: number, upload_id: number) => {
+    try {
+      const updatedGroup = await this.groupRepository.updateGroupAvatar(group_id, upload_id);
+      const groupWthImageURI = {
+        ...updatedGroup,
+        group_image_uri: updatedGroup.group_image_path
+          ? encodeURI(`https://alertly.kshitizagrawal.in/static/${updatedGroup.group_image_path}`)
+          : 'https://alertly.kshitizagrawal.in/static/group-1703505593728.png',
+        group_image_path: undefined,
+      };
+      return groupWthImageURI;
+    } catch (error) {
+      throw error;
     }
   };
 

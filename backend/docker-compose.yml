@@ -2,12 +2,16 @@ version: '3'
 services:
   server:
     build: .
+    restart: unless-stopped
     depends_on:
       postgres:
         condition: service_started
     command: bash -c "npm run migrate && npm run start"
     volumes:
+      - static-content:/static
       - //var/run/docker.sock:/var/run/docker.sock
+      - ${PWD}/combined.log:/combined.log
+      - ${PWD}/error.log:/error.log
     ports:
       - 6069:3000
     networks:
@@ -21,6 +25,8 @@ services:
       - JWT_SECRET=AlertlySecret
       - JWT_ALGO=HS256
       - GOOGLE_AUTH_CLIENT_ID=${GOOGLE_AUTH_CLIENT_ID}
+      - NODE_ENV=${NODE_ENV}
+      - PWD=${PWD}
   postgres:
     image: postgres
     restart: unless-stopped
@@ -33,11 +39,28 @@ services:
       - POSTGRES_DB=alertly
     networks:
       - alertly-network
+    # ports:
+    #   - 5432:5432
     # healthcheck:
     #   test: ["CMD", "curl", "-f", "http://localhost:5432"]
     #   timeout: 5s
+  pgweb:
+    restart: always
+    image: sosedoff/pgweb
+    ports:
+      - '6070:8081'
+    links:
+      - postgres:postgres
+    environment:
+      - DATABASE_URL=postgres://postgres:root@postgres:5432/alertly?sslmode=disable
+    networks:
+      - alertly-network
+    depends_on:
+      - postgres
 volumes:
   postgres-volume:
+    driver: local
+  static-content:
     driver: local
 
 networks:

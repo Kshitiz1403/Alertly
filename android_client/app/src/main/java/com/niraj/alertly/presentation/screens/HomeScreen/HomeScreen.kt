@@ -65,7 +65,9 @@ import com.niraj.alertly.presentation.screens.LoginScreen.LoginViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    navigateToLogin: () -> Unit
+) {
 
 
     val homeViewModel: HomeViewModel = viewModel()

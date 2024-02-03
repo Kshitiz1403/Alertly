@@ -81,7 +81,7 @@ import java.util.Locale
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GroupScreen(
-    groupId: Int = 3
+    groupId: Int = 1
 ) {
 
     val groupScreenViewModel: GroupScreenViewModel = viewModel()
@@ -214,10 +214,15 @@ fun GroupScreen(
         labelColor = MaterialTheme.colorScheme.onSecondaryContainer
     )
     val severities: List<String> = listOf("Normal", "Elevated", "Danger")
-    val colorMap: Map<String, Color> = mapOf(
+    val containerColorMap: Map<String, Color> = mapOf(
         Pair("Normal", Color(0xFFCBFFA9)),
         Pair("Elevated", Color(0xFFFFFEC4)),
         Pair("Danger", Color(0xFFFF9B9B)),
+    )
+    val contentColorMap: Map<String, Color> = mapOf(
+        Pair("Normal", Color.Black),
+        Pair("Elevated", Color.Black),
+        Pair("Danger", Color.White),
     )
 
     if(showCreateAlertDialog) {
@@ -233,7 +238,8 @@ fun GroupScreen(
                     },
                     enabled = showAlertButton,
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = colorMap[alertSeverity]!!
+                        containerColor = containerColorMap[alertSeverity]!!,
+                        contentColor = contentColorMap[alertSeverity]!!
                     )
                 ) {
                     Icon(painter = painterResource(id = R.drawable.circle_exclamation_solid), contentDescription = "Alert")

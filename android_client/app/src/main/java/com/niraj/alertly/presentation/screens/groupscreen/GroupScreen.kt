@@ -93,7 +93,7 @@ fun GroupScreen(
     val group by remember {
         derivedStateOf {
             if(groupList.isEmpty()) GroupData()
-            else groupList[groupId]
+            else groupList[groupId-1]
         }
     }
     

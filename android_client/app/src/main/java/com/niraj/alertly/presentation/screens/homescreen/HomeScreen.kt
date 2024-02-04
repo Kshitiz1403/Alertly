@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -100,6 +101,11 @@ fun HomeScreen(
                         Text("Alertly")
                     },
                     actions = {
+                        IconButton(onClick = {
+                            navigateToLogin()
+                        }) {
+                            Icon(imageVector = Icons.Default.Close, contentDescription = "Log Out")
+                        }
                         IconButton(onClick = {
                             showAlertDialog = true
                         }) {

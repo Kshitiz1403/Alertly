@@ -60,11 +60,11 @@ suspend fun saveToken(token: String, ctx: Context){
     }
 }
 
-//fun deleteToken(ctx: Context) {
-//    runBlocking {
-//        val prefKey = stringPreferencesKey("token")
-//        ctx.dataStore.edit {
-//            it[prefKey] = "-1"
-//        }
-//    }
-//}
+fun deleteToken(ctx: Context) {
+    runBlocking {
+        val prefKey = stringPreferencesKey("token")
+        ctx.dataStore.edit {
+            it[prefKey] = "-1"
+        }
+    }
+}

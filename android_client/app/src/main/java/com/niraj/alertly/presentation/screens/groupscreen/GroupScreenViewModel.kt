@@ -59,7 +59,7 @@ class GroupScreenViewModel : ViewModel() {
             _alertLoadingState.emit(AlertLoadingState.LOADING)
             val resp = apiRepository.getGroupAlerts(groupId, pageNumber, pageSize)
             if(resp.success) {
-                _alertList.emit(resp.data)
+                _alertList.emit(resp.data.reversed())
                 _alertLoadingState.emit(AlertLoadingState.DONE)
             } else {
                 _alertLoadingState.emit(AlertLoadingState.FAILED)

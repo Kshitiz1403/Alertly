@@ -1,12 +1,15 @@
 import LoggerInstance from '@/loaders/logger';
 import { AlertRepository } from '@/repositories/alertRepository';
 import { Service } from 'typedi';
+import NotificationService from './notificationService';
 
 @Service()
 export class AlertService {
   protected alertRepository: AlertRepository;
-  constructor(alertRepo: AlertRepository) {
+  protected notificationService: NotificationService;
+  constructor(alertRepo: AlertRepository, notificationService: NotificationService) {
     this.alertRepository = alertRepo;
+    this.notificationService = notificationService;
   }
 
   public createAlert = async (
@@ -18,6 +21,9 @@ export class AlertService {
   ) => {
     try {
       const alert = await this.alertRepository.createAlert(userID, groupID, alertTitle, description, severity);
+
+      // now push the notification to the users of the same group
+      await this.notificationService.pushNotification(groupID, alertTitle, description, severity);
 
       return alert;
     } catch (error) {

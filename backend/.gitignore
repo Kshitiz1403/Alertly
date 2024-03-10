@@ -7,6 +7,8 @@ temp-static/
 # misc
 .DS_Store
 
+firebase-service-account.json
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

@@ -1,40 +1,18 @@
-# [0.15.0](https://github.com/Kshitiz1403/Alertly/compare/v0.14.0...v0.15.0) (2023-12-20)
+## [0.31.1](https://github.com/Kshitiz1403/Alertly/compare/v0.31.0...v0.31.1) (2024-02-04)
+
+
+### Bug Fixes
+
+* color correction for alert creation button ([559f9c8](https://github.com/Kshitiz1403/Alertly/commit/559f9c8d881050cca43fff894553394c1ddab0bc))
+* Fixed some group issues ([1840a10](https://github.com/Kshitiz1403/Alertly/commit/1840a107164022cb17e40eb90f04d74331deea4c))
 
 
 ### Features
 
-* add title, description to create alert response ([e54913b](https://github.com/Kshitiz1403/Alertly/commit/e54913bc1f79f1f2c04ff082470bbc25d504a302))
-
-
-
-# [0.14.0](https://github.com/Kshitiz1403/Alertly/compare/v0.13.0...v0.14.0) (2023-12-20)
-
-
-### Features
-
-* create alert ([e8c9e79](https://github.com/Kshitiz1403/Alertly/commit/e8c9e790f1ad37c03069eea57aafdb19988124a5))
-
-
-
-# [0.13.0](https://github.com/Kshitiz1403/Alertly/compare/v0.12.0...v0.13.0) (2023-12-19)
-
-
-
-# [0.12.0](https://github.com/Kshitiz1403/Alertly/compare/v0.11.0...v0.12.0) (2023-12-19)
-
-
-### Features
-
-* ability to join group via access code ([88be6f6](https://github.com/Kshitiz1403/Alertly/commit/88be6f6ad53e65c7886024746dee4cd6f357a14b))
-
-
-
-# [0.11.0](https://github.com/Kshitiz1403/Alertly/compare/v0.10.1...v0.11.0) (2023-12-18)
-
-
-### Features
-
-* logging ([497a040](https://github.com/Kshitiz1403/Alertly/commit/497a040b2909f83185352c1a72bf4dc4e347f932))
+* Added access token functionality ([80721cc](https://github.com/Kshitiz1403/Alertly/commit/80721cce1f6131d81cac3d8627c6eaf4d8aeaddf))
+* Added Alert creating functionality and it's UI ([ed5ec73](https://github.com/Kshitiz1403/Alertly/commit/ed5ec73ddc817cb907c5ca72c96b6f801308849b))
+* added group screen, it's viewmodel and the logic of loading the alerts ([97461fc](https://github.com/Kshitiz1403/Alertly/commit/97461fcb82f08167be9762fe03018a32bdf305f5))
+* Added to and fro navigation of Group Screen ([8b90384](https://github.com/Kshitiz1403/Alertly/commit/8b903846058f881170c110f865fd13a20159ceb8))
 
 
 

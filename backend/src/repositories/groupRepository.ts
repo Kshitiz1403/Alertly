@@ -60,13 +60,14 @@ export class GroupRepository {
 
   public getGroupsForUser = async (userID: string) => {
     try {
-      const query = `SELECT groups.group_id, user_groups.pinned, groups.group_name, groups.description, user_groups.is_admin, groups.created_at FROM groups
+      const query = `SELECT groups.group_id, user_groups.pinned, groups.group_name, groups.description, user_groups.is_admin, groups.created_at, uploads.path as group_image_path FROM groups
       INNER JOIN user_groups ON groups.group_id = user_groups.group_id
+      LEFT JOIN uploads ON groups.image_uri_id = uploads.upload_id
       WHERE user_groups.user_id = $1`;
       const values = [userID];
       const result = await this.db.query(query, values);
 
-      const joinedGroups = result.rows as (GroupsModel & { pinned: boolean })[];
+      const joinedGroups = result.rows as (GroupsModel & { pinned: boolean; group_image_path: string })[];
       return joinedGroups;
     } catch (error) {}
   };
@@ -117,5 +118,28 @@ export class GroupRepository {
     const result = await this.db.query(query, [token]);
 
     return result.rows[0] as GroupTokens;
+  };
+
+  public updateGroupAvatar = async (group_id: number, upload_id: number) => {
+    const result = await this.db.query(`SELECT EXISTS (SELECT 1 FROM uploads WHERE upload_id=$1)`, [upload_id]);
+    const exists = result.rows[0].exists as boolean;
+    if (!exists) throw 'the requested image is not found';
+
+    const query = `UPDATE groups SET image_uri_id=$1 WHERE group_id=$2`;
+    const updateResult = await this.db.query(query, [upload_id, group_id]);
+
+    const q = `SELECT group_id, group_name, description, path as group_image_path 
+    FROM groups 
+    JOIN uploads ON groups.image_uri_id = uploads.upload_id
+    WHERE group_id=$1`;
+
+    const groupResultRows = await this.db.query(q, [group_id]);
+    const groupResult = groupResultRows.rows[0] as {
+      group_id: string;
+      group_name: string;
+      description: string;
+      group_image_path: string;
+    };
+    return groupResult;
   };
 }

@@ -33,6 +33,8 @@ export default ({ app }: { app: express.Application }) => {
   // Maybe not needed anymore ?
   app.use(require('method-override')());
 
+  app.use('/static', express.static(config.staticFilesPath));
+
   // Transforms the raw string of req.body into json
   app.use(express.json());
 

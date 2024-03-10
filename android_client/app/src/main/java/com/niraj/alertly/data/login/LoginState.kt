@@ -1,4 +1,4 @@
-package com.niraj.alertly.data
+package com.niraj.alertly.data.login
 
 enum class LoginState {
     NOTLOGGEDIN,

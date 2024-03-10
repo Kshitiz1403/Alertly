@@ -106,4 +106,6 @@ export default (app: Router) => {
   group_routes.post('/join', middlewares.isAuth, ctrl.joinGroupByToken);
 
   group_routes.post('/:group_id/alert', middlewares.isAuth, middlewares.isUserInGroup, ctrl.createAlert);
+
+  group_routes.post('/:group_id/avatar', middlewares.isAuth, middlewares.isUserInGroup, ctrl.updateGroupAvatar);
 };

@@ -81,8 +81,15 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+    // Datastore
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    // Compose Navigation
+    implementation("androidx.navigation:navigation-compose:2.7.6")
+
     // Google Sign in
-    implementation("com.github.stevdza-san:OneTapCompose:1.0.0")
+    implementation("com.github.stevdza-san:OneTapCompose:1.0.11")
+
 
     //RETROFIT
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -98,6 +105,9 @@ dependencies {
     val lifecycle_version = "2.6.1"
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
+
+    //COIL
+    implementation("io.coil-kt:coil-compose:2.2.1")
 }
 
 kapt {

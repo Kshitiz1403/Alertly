@@ -1,4 +1,4 @@
-package com.niraj.alertly.data
+package com.niraj.alertly.data.login
 
 data class LoginResponse(
     val `data`: Data,

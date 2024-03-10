@@ -13,8 +13,8 @@ export class AlertService {
   }
 
   public createAlert = async (
-    userID,
-    groupID,
+    userID: string,
+    groupID: number,
     alertTitle: string,
     description = '',
     severity: 'normal' | 'elevated' | 'danger',
@@ -23,7 +23,7 @@ export class AlertService {
       const alert = await this.alertRepository.createAlert(userID, groupID, alertTitle, description, severity);
 
       // now push the notification to the users of the same group
-      await this.notificationService.pushNotification(groupID, alertTitle, description, severity);
+      await this.notificationService.pushNotification(groupID.toString(), alertTitle, description, severity);
 
       return alert;
     } catch (error) {

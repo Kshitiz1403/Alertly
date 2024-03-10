@@ -23,7 +23,7 @@ export class AlertService {
       const alert = await this.alertRepository.createAlert(userID, groupID, alertTitle, description, severity);
 
       // now push the notification to the users of the same group
-      await this.notificationService.pushNotification(groupID, alertTitle, description);
+      await this.notificationService.pushNotification(groupID, alertTitle, description, severity);
 
       return alert;
     } catch (error) {

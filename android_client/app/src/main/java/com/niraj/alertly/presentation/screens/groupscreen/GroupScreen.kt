@@ -75,6 +75,8 @@ import com.niraj.alertly.R
 import com.niraj.alertly.data.GroupData
 import com.niraj.alertly.data.groupalerts.Alert
 import com.niraj.alertly.data.groupalerts.AlertLoadingState
+import com.niraj.alertly.utils.containerColorMap
+import com.niraj.alertly.utils.contentColorMap
 import kotlinx.coroutines.launch
 import java.util.Locale
 
@@ -215,16 +217,7 @@ fun GroupScreen(
         labelColor = MaterialTheme.colorScheme.onSecondaryContainer
     )
     val severities: List<String> = listOf("Normal", "Elevated", "Danger")
-    val containerColorMap: Map<String, Color> = mapOf(
-        Pair("Normal", Color(0xFFCBFFA9)),
-        Pair("Elevated", Color(0xFFFFFEC4)),
-        Pair("Danger", Color(0xFFFF9B9B)),
-    )
-    val contentColorMap: Map<String, Color> = mapOf(
-        Pair("Normal", Color.Black),
-        Pair("Elevated", Color.Black),
-        Pair("Danger", Color.White),
-    )
+
 
     if(showCreateAlertDialog) {
         AlertDialog(

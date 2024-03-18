@@ -8,7 +8,7 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.Corona.CoronaTracker" />
+                  <option name="appId" value="com.radio.pocketfm" />
                 </ConnectionSetting>
               </option>
               <option name="failureTypes">
@@ -27,10 +27,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.niraj.alertly" />
+                  <option name="mobileSdkAppId" value="1:240705485383:android:ff5af4a40d3e62659fcf62" />
+                  <option name="projectId" value="alertly-d8e85" />
+                  <option name="projectNumber" value="240705485383" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

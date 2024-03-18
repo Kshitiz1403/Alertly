@@ -4,7 +4,12 @@ import config from '@/config';
 const transports = [];
 if(config.node_env!=="development") {
   transports.push(
-    new winston.transports.Console()
+    new winston.transports.Console({
+      format: winston.format.combine(
+        winston.format.cli(),
+        winston.format.splat(),
+      )
+    })
   )
   transports.push(
     new winston.transports.File({filename:'error.log', level:'error'}),

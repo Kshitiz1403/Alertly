@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "240705485383",
+    "project_id": "alertly-d8e85",
+    "storage_bucket": "alertly-d8e85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240705485383:android:ff5af4a40d3e62659fcf62",
+        "android_client_info": {
+          "package_name": "com.niraj.alertly"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACfkf0WgfFXrHinEd92cRc5XuRAEVDrxI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

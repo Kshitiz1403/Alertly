@@ -1,8 +1,13 @@
 package com.niraj.alertly.presentation.screens.homescreen
 
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.messaging.FirebaseMessagingService
+import com.google.firebase.messaging.ktx.messaging
+import com.google.firebase.messaging.messaging
 import com.niraj.alertly.DI.APIRepository
 import com.niraj.alertly.MyApplication
 import com.niraj.alertly.data.GroupData
@@ -29,7 +34,15 @@ class HomeViewModel @Inject constructor() : ViewModel() {
                 _groupList.emit(resp.data)
             }
             Toast.makeText(MyApplication.appContext, "Groups Updated", Toast.LENGTH_SHORT).show()
+            resp.data.forEach {group ->
+                FirebaseMessaging.getInstance().subscribeToTopic(group.group_id.toString()).addOnCompleteListener {
+                    if(it != null) {
+                        Log.d("FIRE", it.isSuccessful.toString())
+                    }
+                }
+            }
         }
+
     }
 
     fun joinGroup(accessToken: String) {
